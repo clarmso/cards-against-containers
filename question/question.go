@@ -1,7 +1,7 @@
-package questions
+package question
 
-// Questions is an array of strings that contains all possible questions from the game.
-var Questions = []string{
+// Question is an array of strings that contains all possible questions from the game.
+var Question = []string{
 	"________ is going to solve all our problems.",
 	"________ is the only way I can work with my colleagues.",
 	"'Everything fails all the time' was referring to ________.",

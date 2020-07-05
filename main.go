@@ -7,20 +7,20 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/clarmso/card-against-containers-rest-api/answers"
-	"github.com/clarmso/card-against-containers-rest-api/questions"
+	"card-against-containers-rest-api/answer"
+	"card-against-containers-rest-api/question"
 
 	"github.com/gorilla/mux"
 )
 
 func getRandomAnswer(w http.ResponseWriter, r *http.Request) {
 	rand.Seed(time.Now().Unix())
-	fmt.Fprintf(w, answers.Answers[rand.Intn(len(answers.Answers))])
+	fmt.Fprintf(w, answer.Answer[rand.Intn(len(answer.Answer))])
 }
 
 func getRandomQuestion(w http.ResponseWriter, r *http.Request) {
 	rand.Seed(time.Now().Unix())
-	fmt.Fprintf(w, questions.Questions[rand.Intn(len(questions.Questions))])
+	fmt.Fprintf(w, question.Question[rand.Intn(len(question.Question))])
 }
 
 func main() {

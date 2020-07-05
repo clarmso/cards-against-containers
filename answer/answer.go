@@ -1,7 +1,7 @@
-package answers
+package answer
 
-// Answers is an array of strings that contains all possible answers from the game.
-var Answers = []string{
+// Answer is an array of strings that contains all possible answers from the game.
+var Answer = []string{
 	"Jenkins",
 	"Kubernetes",
 	"Containers",
