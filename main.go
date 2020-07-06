@@ -14,17 +14,22 @@ import (
 )
 
 func getRandomAnswer(w http.ResponseWriter, r *http.Request) {
-	rand.Seed(time.Now().Unix())
-	fmt.Fprintf(w, answer.Answer[rand.Intn(len(answer.Answer))])
+	rand.Seed(time.Now().UnixNano())
+	randomAnswer := answer.Answer[rand.Intn(len(answer.Answer))]
+	log.Printf("Random answer returned: %s", randomAnswer)
+	fmt.Fprintf(w, randomAnswer)
 }
 
 func getRandomQuestion(w http.ResponseWriter, r *http.Request) {
-	rand.Seed(time.Now().Unix())
-	fmt.Fprintf(w, question.Question[rand.Intn(len(question.Question))])
+	rand.Seed(time.Now().UnixNano())
+	randomQuestion := question.Question[rand.Intn(len(question.Question))]
+	log.Printf("Random question returned: %s", randomQuestion)
+	fmt.Fprintf(w, randomQuestion)
 }
 
 func main() {
 	const Port = 8080
+	log.Println("Server started")
 	router := mux.NewRouter().StrictSlash(true)
 	api := router.PathPrefix("/api").Subrouter()
 	api1 := api.PathPrefix("/v1").Subrouter()
