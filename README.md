@@ -1,2 +1,2 @@
-# card-against-containers-rest-api
+# cards-against-containers-rest-api
 Simple REST API server to demonstrate golang
