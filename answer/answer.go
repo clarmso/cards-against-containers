@@ -273,4 +273,5 @@ var Answer = []string{
 	"Command + CTRL + Q",
 	"Teams RAM Usage",
 	"@everyone in Company-wide Yammer page",
+	"Cobol",
 }
