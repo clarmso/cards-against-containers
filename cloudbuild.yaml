@@ -1,0 +1,5 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/cards-against-containers/cards-against-containers-rest-api', '.' ]
+images:
+- 'gcr.io/cards-against-containers/cards-against-containers-rest-api'
