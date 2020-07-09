@@ -1,5 +1,21 @@
 steps:
+# Build locally (if fails don't bother the next steps)
+- name: golang:1.14.4
+  args: ['go', 'build', '.']
+# Build the container image
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/cards-against-containers/cards-against-containers-rest-api', '.' ]
-images:
-- 'gcr.io/cards-against-containers/cards-against-containers-rest-api'
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/cards-against-containers/cards-against-containers-rest-api']
+# Deploy container image to Cloud Run
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: [
+    'run', 
+    'deploy', 
+    'cards-against-containers', 
+    '--image', 'gcr.io/cards-against-containers/cards-against-containers-rest-api', 
+    '--region', 'northamerica-northeast1', 
+    '--platform', 'managed', 
+    '--allow-unauthenticated']
+images: ['gcr.io/cards-against-containers/cards-against-containers-rest-api']
