@@ -1,7 +1,7 @@
 steps:
-# Build locally (if fails don't bother the next steps)
+# Test! (if fails don't bother the next steps)
 - name: golang:1.14.4
-  args: ['go', 'build', '.']
+  args: ['go', 'test']
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/cards-against-containers/cards-against-containers-rest-api', '.' ]
