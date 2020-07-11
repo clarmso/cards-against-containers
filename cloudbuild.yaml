@@ -15,7 +15,7 @@ steps:
     'deploy', 
     '$PROJECT_ID', 
     '--image', 'gcr.io/$PROJECT_ID/$PROJECT_ID-rest-api', 
-    '--region', 'northamerica-northeast1', 
+    '--region', '${_REGION}', 
     '--platform', 'managed', 
     '--allow-unauthenticated']
 images: ['gcr.io/$PROJECT_ID/$PROJECT_ID-rest-api']
