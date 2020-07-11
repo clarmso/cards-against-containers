@@ -4,18 +4,18 @@ steps:
   args: ['go', 'test']
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'gcr.io/cards-against-containers/cards-against-containers-rest-api', '.' ]
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/$PROJECT_ID-rest-api', '.' ]
 # Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/cards-against-containers/cards-against-containers-rest-api']
+  args: ['push', 'gcr.io/$PROJECT_ID/$PROJECT_ID-rest-api']
 # Deploy container image to Cloud Run
 - name: 'gcr.io/cloud-builders/gcloud'
   args: [
     'run', 
     'deploy', 
-    'cards-against-containers', 
-    '--image', 'gcr.io/cards-against-containers/cards-against-containers-rest-api', 
+    '$PROJECT_ID', 
+    '--image', 'gcr.io/$PROJECT_ID/$PROJECT_ID-rest-api', 
     '--region', 'northamerica-northeast1', 
     '--platform', 'managed', 
     '--allow-unauthenticated']
-images: ['gcr.io/cards-against-containers/cards-against-containers-rest-api']
+images: ['gcr.io/$PROJECT_ID/$PROJECT_ID-rest-api']
