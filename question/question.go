@@ -1,5 +1,11 @@
 package question
 
+// ResponseQuestion defines the json of from the /api/v1/question REST API endpoint.
+type ResponseQuestion struct {
+	Index    int    `json:"index"`
+	Question string `json:"question"`
+}
+
 // Question is an array of strings that contains all possible questions from the game.
 var Question = []string{
 	"________ is going to solve all our problems.",

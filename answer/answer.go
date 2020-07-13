@@ -1,5 +1,11 @@
 package answer
 
+// ResponseAnswer defines the json of from the /api/v1/answer REST API endpoint.
+type ResponseAnswer struct {
+	Index  int    `json:"index"`
+	Answer string `json:"answer"`
+}
+
 // Answer is an array of strings that contains all possible answers from the game.
 var Answer = []string{
 	"Jenkins",
