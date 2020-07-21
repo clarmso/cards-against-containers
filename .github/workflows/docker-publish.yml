@@ -41,6 +41,7 @@ jobs:
           else
             cd rest-api/
             docker build . --file Dockerfile
+            go test
           fi
 
   # Push image to GitHub Packages.
