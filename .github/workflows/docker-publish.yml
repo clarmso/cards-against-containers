@@ -58,7 +58,7 @@ jobs:
         run: cd rest-api/; docker build . --file Dockerfile --tag $IMAGE_NAME
 
       - name: Log into registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login --username clarmso -u --password-stdin
 
       - name: Push image
         run: |
