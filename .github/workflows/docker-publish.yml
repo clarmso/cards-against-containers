@@ -59,7 +59,7 @@ jobs:
         run: cd rest-api/; docker build . --file Dockerfile --tag $IMAGE_NAME
 
       - name: Log into registry
-        run: docker login --username $DOCKER_USERNAME -u --password ${{ secrets.DOCKERHUB_TOKEN }}
+        run: docker login --username $DOCKER_USERNAME --password ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Push image
         run: |
