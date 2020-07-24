@@ -132,7 +132,7 @@ var Answer = []string{
 	"The illusion of choice when being asked to decide on technology",
 	"Explosions",
 	"Apathetic procrastination",
-	"Giving 110%%",
+	"Giving 110%",
 	"Browsing k8s.af instead of doing actual work",
 	"Ignoring a pull request because they disagreed with you in a meeting",
 	"Visual Studio Code Plugins",
