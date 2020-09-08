@@ -1,5 +1,13 @@
 package question
 
+import (
+	"encoding/json"
+	"log"
+	"math/rand"
+	"net/http"
+	"time"
+)
+
 // ResponseQuestion defines the json of from the /api/v1/question REST API endpoint.
 type ResponseQuestion struct {
 	Index    int    `json:"index"`
@@ -7,7 +15,7 @@ type ResponseQuestion struct {
 }
 
 // Question is an array of strings that contains all possible questions from the game.
-var Question = []string{
+var question = []string{
 	"________ is going to solve all our problems.",
 	"________ is the only way I can work with my colleagues.",
 	"'Everything fails all the time' was referring to ________.",
@@ -111,4 +119,14 @@ var Question = []string{
 	"Can we go-live with ______ by tomorrow?",
 	"Oh yeah, we pushed ______ to production yesterday! Didn't you know?",
 	"My Inbox filters ______ emails to Trash.",
+}
+
+// GetRandomQuestionV1 is the entry point for GET /api/v1/question
+func GetRandomQuestionV1(w http.ResponseWriter, r *http.Request) {
+	rand.Seed(time.Now().UnixNano())
+	questionIndex := rand.Intn(len(question))
+	randomQuestion := question[questionIndex]
+	response := ResponseQuestion{Index: questionIndex, Question: randomQuestion}
+	log.Printf("Index = %d. Random question: %s", response.Index, response.Question)
+	json.NewEncoder(w).Encode(response)
 }

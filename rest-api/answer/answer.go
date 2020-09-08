@@ -1,5 +1,13 @@
 package answer
 
+import (
+	"encoding/json"
+	"log"
+	"math/rand"
+	"net/http"
+	"time"
+)
+
 // ResponseAnswer defines the json of from the /api/v1/answer REST API endpoint.
 type ResponseAnswer struct {
 	Index  int    `json:"index"`
@@ -7,7 +15,7 @@ type ResponseAnswer struct {
 }
 
 // Answer is an array of strings that contains all possible answers from the game.
-var Answer = []string{
+var answer = []string{
 	"Jenkins",
 	"Kubernetes",
 	"Containers",
@@ -279,4 +287,14 @@ var Answer = []string{
 	"Command + CTRL + Q",
 	"Teams RAM Usage",
 	"@everyone in Company-wide Yammer page",
+}
+
+// GetRandomAnswerV1 is the entry point for GET /api/v1/question
+func GetRandomAnswerV1(w http.ResponseWriter, r *http.Request) {
+	rand.Seed(time.Now().UnixNano())
+	answerIndex := rand.Intn(len(answer))
+	randomAnswer := answer[answerIndex]
+	response := ResponseAnswer{Index: answerIndex, Answer: randomAnswer}
+	log.Printf("Index = %d. Random answer: %s", response.Index, response.Answer)
+	json.NewEncoder(w).Encode(response)
 }

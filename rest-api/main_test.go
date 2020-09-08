@@ -5,6 +5,7 @@ import (
 	"card-against-containers-rest-api/answer"
 	"card-against-containers-rest-api/question"
 	"encoding/json"
+	"math/rand"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -25,22 +26,22 @@ func convertBodyToAnswer(body string) answer.ResponseAnswer {
 }
 
 func TestGetRandomQuestion(t *testing.T) {
-	body := assert.HTTPBody(getRandomQuestion, "GET", "/api/v1/question", nil)
+	body := assert.HTTPBody(question.GetRandomQuestionV1, "GET", "/api/v1/question", nil)
 	assert.NotNil(t, body)
 	mesg := convertBodyToQuestion(body)
-	assert.Contains(t, question.Question, mesg.Question)
-	assert.Equal(t, question.Question[mesg.Index], mesg.Question)
+	assert.IsType(t, "I am a string!", mesg.Question)
+	assert.IsType(t, rand.Int(), mesg.Index)
 }
 
 func TestGetRandomAnswer(t *testing.T) {
-	body := assert.HTTPBody(getRandomAnswer, "GET", "/api/v1/answer", nil)
+	body := assert.HTTPBody(answer.GetRandomAnswerV1, "GET", "/api/v1/answer", nil)
 	assert.NotNil(t, body)
 	mesg := convertBodyToAnswer(body)
-	assert.Contains(t, answer.Answer, mesg.Answer)
-	assert.Equal(t, answer.Answer[mesg.Index], mesg.Answer)
+	assert.IsType(t, "I am a string!", mesg.Answer)
+	assert.IsType(t, rand.Int(), mesg.Index)
 }
 
 func TestAllKnownEndpoints(t *testing.T) {
-	assert.HTTPSuccess(t, getRandomQuestion, "GET", "/api/v1/question", nil)
-	assert.HTTPSuccess(t, getRandomAnswer, "GET", "/api/v1/answer", nil)
+	assert.HTTPSuccess(t, question.GetRandomQuestionV1, "GET", "/api/v1/question", nil)
+	assert.HTTPSuccess(t, answer.GetRandomAnswerV1, "GET", "/api/v1/answer", nil)
 }
