@@ -6,8 +6,7 @@ import { Button, Grid } from "@material-ui/core"
 import RefreshIcon from "@material-ui/icons/Refresh"
 
 import Layout from "../components/layout"
-import Question from "../components/question"
-import Answer from "../components/answer"
+import {Question, Answer} from "../components/myCard"
 import SEO from "../components/seo"
 
 
