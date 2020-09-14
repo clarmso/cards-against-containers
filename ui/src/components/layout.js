@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 const Layout = ({ children }) => {
   const classes = useStyles()
 
-  const data = useStaticQuery(graphql`
+  const { site } = useStaticQuery(graphql`
     query LayoutQuery {
       site {
         siteMetadata {
@@ -37,8 +37,8 @@ const Layout = ({ children }) => {
   return (
     <Container className={classes.root}>
       <Header
-        siteTitle={data.site.siteMetadata.title}
-        siteDescription={data.site.siteMetadata.description}
+        siteTitle={site.siteMetadata.title}
+        siteDescription={site.siteMetadata.description}
       />
       {children}
       <footer>Clare So © {new Date().getFullYear()}</footer>
