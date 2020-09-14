@@ -9,7 +9,7 @@ const CARD_WIDTH = "250px"
 const CARD_HEIGHT = "250px"
 const BLACK = "#322923"
 
-const useStylesQuestion = makeStyles(() => ({
+const useStylesQuestion = makeStyles({
   questionCard: {
     backgroundColor: BLACK,
     color: "white",
@@ -18,9 +18,9 @@ const useStylesQuestion = makeStyles(() => ({
   questionContent: {
     height: CARD_HEIGHT
   }
-}))
+})
 
-const useStylesAnswer = makeStyles(() => ({
+const useStylesAnswer = makeStyles({
   answerCard: {
     backgroundColor: "white",
     color: BLACK,
@@ -29,7 +29,7 @@ const useStylesAnswer = makeStyles(() => ({
   answerContent: {
     height: CARD_HEIGHT
   }
-}));
+})
 
 const Question = ({ question }) => {
   const classes = useStylesQuestion()

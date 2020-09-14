@@ -4,7 +4,7 @@ import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import { Grid } from "@material-ui/core"
 
-const useStyles = makeStyles(black => ({
+const useStyles = makeStyles(({
   header: {
     backgroundColor: "#322923",
     color: "white",

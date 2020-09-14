@@ -14,11 +14,11 @@ import Header from "./header"
 import { makeStyles } from "@material-ui/core/styles"
 import { Container } from "@material-ui/core"
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   root: {
     fontFamily: "Helvetica",
   },
-}))
+})
 
 const Layout = ({ children }) => {
   const classes = useStyles()
