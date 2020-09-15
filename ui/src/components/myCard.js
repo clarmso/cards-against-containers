@@ -10,55 +10,47 @@ const CARD_HEIGHT = "250px"
 const BLACK = "#322923"
 
 const useStylesQuestion = makeStyles({
-  questionCard: {
+  card: {
     backgroundColor: BLACK,
     color: "white",
     width: CARD_WIDTH
   },
-  questionContent: {
+  content: {
     height: CARD_HEIGHT
   }
 })
 
 const useStylesAnswer = makeStyles({
-  answerCard: {
+  card: {
     backgroundColor: "white",
     color: BLACK,
     width: CARD_WIDTH
   },
-  answerContent: {
+  content: {
     height: CARD_HEIGHT
   }
 })
 
-const Question = ({ question }) => {
-  const classes = useStylesQuestion()
+const myCard = (content, classes) => {
   return (
-    <Card raised={true} className={classes.questionCard}>
-      <CardContent className={classes.questionContent}>
-        {question}
+    <Card raised={true} className={classes.card}>
+      <CardContent className={classes.content}>
+        {content}
         </CardContent>
       <CardActions>
         <ComputerIcon />
-        Cards Against Containers
+        <span>Cards Against Containers</span>
       </CardActions>
     </Card>
   )
 }
 
+const Question = ({ question }) => {
+  return myCard(question, useStylesQuestion());
+}
+
 const Answer = ({answer}) => {
-  const classes = useStylesAnswer()
-  return (
-    <Card raised={true} className={classes.answerCard} >
-      <CardContent className={classes.answerContent}>
-        {answer}
-      </CardContent>
-      <CardActions>
-        <ComputerIcon />
-        Cards Against Containers
-      </CardActions>
-    </Card>
-  )
+  return myCard(answer, useStylesAnswer())
 }
 
 Question.propTypes = {
