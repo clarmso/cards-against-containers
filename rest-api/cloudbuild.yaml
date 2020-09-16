@@ -1,6 +1,6 @@
 steps:
 # Test! (if fails don't bother the next steps)
-- name: golang:1.14.4
+- name: golang:1.15.1
   args: ['go', 'test']
   dir: 'rest-api'
 # Build the container image
