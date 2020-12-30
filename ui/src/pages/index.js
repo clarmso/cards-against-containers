@@ -39,18 +39,18 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Cards Against Containers" />
       <Grid container justify="space-evenly" alignItems="stretch">
-        <Grid item sm={4}>
+        <Grid item>
           <br />
           <Question question={question} />
         </Grid>
-        <Grid item sm={4}>
+        <Grid item>
           <br />
           <Answer answer={answer} />
         </Grid>
       </Grid>
       <br />
       <br />
-      <Grid container justify="center" size="large">
+      <Grid container justify="center">
         <Button
           color="primary"
           variant="contained"

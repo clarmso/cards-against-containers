@@ -4,6 +4,7 @@ import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import { Card, CardActions, CardContent } from "@material-ui/core"
 import ComputerIcon from "@material-ui/icons/Computer"
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const CARD_WIDTH = "250px"
 const CARD_HEIGHT = "250px"
@@ -35,8 +36,8 @@ const myCard = (content, classes) => {
   return (
     <Card raised={true} className={classes.card}>
       <CardContent className={classes.content}>
-        {content}
-        </CardContent>
+        {!content ? <CircularProgress size={20} /> : content}
+      </CardContent>
       <CardActions>
         <ComputerIcon />
         <span>Cards Against Containers</span>

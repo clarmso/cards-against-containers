@@ -1,9 +1,11 @@
 module.exports = {
   siteMetadata: {
     title: `Cards Against Containers`,
-    description: `Randomly generated DevOps jokes. Don't take them too seriously. 😜`,
-    author: `@clarmso`,
-    black: `#322923`
+    description: `Randomly generated DevOps jokes. Don't take them seriously. 😜`,
+    author: `Clare So`,
+    homepage_link: `https://clarmso.ca`,
+    black: `#322923`,
+    github_link: `https://github.com/clarmso/cards-against-containers`,
   },
   plugins: [
     `gatsby-plugin-material-ui`,

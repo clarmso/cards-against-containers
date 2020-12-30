@@ -6,8 +6,9 @@ import { Grid } from "@material-ui/core"
 
 const useStyles = makeStyles(({
   header: {
-    backgroundColor: "#322923",
+    background: "#322923",
     color: "white",
+    borderRadius: "5px"
   },
   gameName: {
     paddingTop: "20px",
@@ -26,7 +27,7 @@ const Header = ({ siteTitle, siteDescription }) => {
   return (
     <Grid item className={classes.header}>
       <h1 className={classes.gameName}>{siteTitle}</h1>
-      <h4 className={classes.subtitle}>{siteDescription}</h4>
+      <p className={classes.subtitle}>{siteDescription}</p>
     </Grid>
   )
 }

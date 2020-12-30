@@ -10,6 +10,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
+import Footer from "./footer"
 
 import { makeStyles } from "@material-ui/core/styles"
 import { Container } from "@material-ui/core"
@@ -27,8 +28,11 @@ const Layout = ({ children }) => {
     query LayoutQuery {
       site {
         siteMetadata {
-          title
+          author
           description
+          title
+          github_link
+          homepage_link
         }
       }
     }
@@ -41,7 +45,11 @@ const Layout = ({ children }) => {
         siteDescription={site.siteMetadata.description}
       />
       {children}
-      <footer>Clare So © {new Date().getFullYear()}</footer>
+      <Footer 
+        author={site.siteMetadata.author}
+        homepageLink={site.siteMetadata.homepage_link}
+        githubLink={site.siteMetadata.github_link}
+      />
     </Container>
   )
 }
