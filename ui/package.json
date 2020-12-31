@@ -36,8 +36,7 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby build; firebase serve",
+    "start": "gatsby build; gatsby develop",
     "clean": "gatsby clean",
     "deploy": "gatsby clean; gatsby build; firebase deploy",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
