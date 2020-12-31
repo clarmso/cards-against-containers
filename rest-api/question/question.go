@@ -3,15 +3,18 @@ package question
 import (
 	"encoding/json"
 	"log"
+	"math"
 	"math/rand"
 	"net/http"
+	"strings"
 	"time"
 )
 
 // ResponseQuestion defines the json of from the /api/v1/question REST API endpoint.
 type ResponseQuestion struct {
-	Index    int    `json:"index"`
-	Question string `json:"question"`
+	Index     int    `json:"index"`
+	Question  string `json:"question"`
+	NumAnswer int    `json:"numAnswer"`
 }
 
 // Question is an array of strings that contains all possible questions from the game.
@@ -115,10 +118,10 @@ var question = []string{
 	"I'm sure ________ will reimplement ________ soon.",
 	"We deliver ________-class products.",
 	"Instead of a firewall, we implemented ________.",
-	"We store all the SSH keys in /www/______.",
-	"Can we go-live with ______ by tomorrow?",
-	"Oh yeah, we pushed ______ to production yesterday! Didn't you know?",
-	"My Inbox filters ______ emails to Trash.",
+	"We store all the SSH keys in /www/________.",
+	"Can we go-live with ________ by tomorrow?",
+	"Oh yeah, we pushed ________to production yesterday! Didn't you know?",
+	"My Inbox filters ________ emails to Trash.",
 }
 
 // GetRandomQuestionV1 is the entry point for GET /api/v1/question
@@ -126,7 +129,8 @@ func GetRandomQuestionV1(w http.ResponseWriter, r *http.Request) {
 	rand.Seed(time.Now().UnixNano())
 	questionIndex := rand.Intn(len(question))
 	randomQuestion := question[questionIndex]
-	response := ResponseQuestion{Index: questionIndex, Question: randomQuestion}
-	log.Printf("Index = %d. Random question: %s", response.Index, response.Question)
+	numAnswer := int(math.Max(float64(strings.Count(randomQuestion, "________")), 1.0))
+	response := ResponseQuestion{Index: questionIndex, Question: randomQuestion, NumAnswer: numAnswer}
+	log.Printf("Index = %d. Random question: %s, Number of answers: %d", response.Index, response.Question, response.NumAnswer)
 	json.NewEncoder(w).Encode(response)
 }

@@ -31,6 +31,8 @@ func TestGetRandomQuestion(t *testing.T) {
 	mesg := convertBodyToQuestion(body)
 	assert.IsType(t, "I am a string!", mesg.Question)
 	assert.IsType(t, rand.Int(), mesg.Index)
+	assert.IsType(t, rand.Int(), mesg.NumAnswer)
+	assert.GreaterOrEqual(t, mesg.NumAnswer, 1)
 }
 
 func TestGetRandomAnswer(t *testing.T) {

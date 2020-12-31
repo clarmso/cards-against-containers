@@ -18,8 +18,11 @@ const Footer = ({ author, homepageLink, githubLink }) => {
       <br />
       <footer className={classes.footer}>
         <p>
-          Made with 💖 by <a href={homepageLink}>{author}</a> ©{" "}
-          {new Date().getFullYear()}.{" "}
+          Made with{" "}
+          <span role="img" aria-label="heart">
+            💖{" "}
+          </span>{" "}
+          by <a href={homepageLink}>{author}</a> © {new Date().getFullYear()}.{" "}
           <a href={githubLink}>
             <GitHubIcon />
           </a>

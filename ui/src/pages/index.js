@@ -9,31 +9,47 @@ import Layout from "../components/layout"
 import { Question, Answer } from "../components/myCard"
 import SEO from "../components/seo"
 
-const updateAllCards = (setQuestion, setAnswer, setLoading) => {
+const updateAllCards = async (setQuestion, setAnswer, setLoading) => {
   setLoading(true)
-  const promiseQuestion = axios.get("/api/v1/question").then(response => {
+
+  let numAnswer
+  await axios.get("/api/v1/question").then(response => {
     const question = response.data.question
-    console.log(`Question: ${question}`)
+    numAnswer = response.data.numAnswer
     setQuestion(question)
   })
-  const promiseAnswer = axios.get("/api/v1/answer").then(response => {
-    const answer = response.data.answer
-    console.log(`Answer: ${answer}`)
-    setAnswer(answer)
-  })
-  Promise.all([promiseQuestion, promiseAnswer]).then(() => {
-    setLoading(false)
-  })
+
+  let allAnswers = []
+  while (numAnswer > 0) {
+    await axios.get("/api/v1/answer").then(response => {
+      const answer = response.data.answer
+      allAnswers.push(answer)
+    })
+    numAnswer--
+  }
+  setAnswer(allAnswers)
+
+  setLoading(false)
 }
 
 const IndexPage = () => {
-  const [answer, setAnswer] = useState("")
+  const [answer, setAnswer] = useState([""])
   const [question, setQuestion] = useState("")
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     updateAllCards(setQuestion, setAnswer, setLoading)
   }, [])
+
+  const answerList = []
+  answer.forEach(ans => {
+    answerList.push(
+      <Grid item key={ans}>
+        <br />
+        <Answer answer={ans} />
+      </Grid>
+    )
+  })
 
   return (
     <Layout>
@@ -43,10 +59,7 @@ const IndexPage = () => {
           <br />
           <Question question={question} />
         </Grid>
-        <Grid item>
-          <br />
-          <Answer answer={answer} />
-        </Grid>
+        {answerList}
       </Grid>
       <br />
       <br />
