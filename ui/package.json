@@ -24,7 +24,9 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "prettier": "2.1.1"
+    "husky": "4.3.6",
+    "prettier": "2.1.1",
+    "pretty-quick": "3.1.0"
   },
   "keywords": [
     "gatsby"
@@ -35,8 +37,9 @@
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
-    "serve": "gatsby serve",
+    "serve": "gatsby build; firebase serve",
     "clean": "gatsby clean",
+    "deploy": "gatsby clean; gatsby build; firebase deploy",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "repository": {
@@ -45,5 +48,10 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }

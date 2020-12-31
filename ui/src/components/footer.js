@@ -3,12 +3,12 @@ import React from "react"
 
 import { makeStyles } from "@material-ui/core/styles"
 import { Grid } from "@material-ui/core"
-import GitHubIcon from '@material-ui/icons/GitHub';
+import GitHubIcon from "@material-ui/icons/GitHub"
 
 const useStyles = makeStyles({
   footer: {
-    padding: "5px"
-  }
+    padding: "5px",
+  },
 })
 
 const Footer = ({ author, homepageLink, githubLink }) => {
@@ -18,8 +18,11 @@ const Footer = ({ author, homepageLink, githubLink }) => {
       <br />
       <footer className={classes.footer}>
         <p>
-        Made with 💖 by <a href={homepageLink}>{author}</a> © {new Date().getFullYear()}.{" "}
-        <a href={githubLink}><GitHubIcon /></a>
+          Made with 💖 by <a href={homepageLink}>{author}</a> ©{" "}
+          {new Date().getFullYear()}.{" "}
+          <a href={githubLink}>
+            <GitHubIcon />
+          </a>
         </p>
       </footer>
     </Grid>

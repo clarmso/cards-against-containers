@@ -15,7 +15,7 @@
 # vendor/
 
 # Executable that are generated dynamically
-cards-against-containers-rest-api
+card-against-containers-rest-api
 
 # Google Firebase related logs and cache
 hosting.*.cache

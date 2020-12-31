@@ -45,7 +45,7 @@ const Layout = ({ children }) => {
         siteDescription={site.siteMetadata.description}
       />
       {children}
-      <Footer 
+      <Footer
         author={site.siteMetadata.author}
         homepageLink={site.siteMetadata.homepage_link}
         githubLink={site.siteMetadata.github_link}

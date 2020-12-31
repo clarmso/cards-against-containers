@@ -4,7 +4,7 @@ import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import { Card, CardActions, CardContent } from "@material-ui/core"
 import ComputerIcon from "@material-ui/icons/Computer"
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from "@material-ui/core/CircularProgress"
 
 const CARD_WIDTH = "250px"
 const CARD_HEIGHT = "250px"
@@ -14,22 +14,22 @@ const useStylesQuestion = makeStyles({
   card: {
     backgroundColor: BLACK,
     color: "white",
-    width: CARD_WIDTH
+    width: CARD_WIDTH,
   },
   content: {
-    height: CARD_HEIGHT
-  }
+    height: CARD_HEIGHT,
+  },
 })
 
 const useStylesAnswer = makeStyles({
   card: {
     backgroundColor: "white",
     color: BLACK,
-    width: CARD_WIDTH
+    width: CARD_WIDTH,
   },
   content: {
-    height: CARD_HEIGHT
-  }
+    height: CARD_HEIGHT,
+  },
 })
 
 const myCard = (content, classes) => {
@@ -47,10 +47,10 @@ const myCard = (content, classes) => {
 }
 
 const Question = ({ question }) => {
-  return myCard(question, useStylesQuestion());
+  return myCard(question, useStylesQuestion())
 }
 
-const Answer = ({answer}) => {
+const Answer = ({ answer }) => {
   return myCard(answer, useStylesAnswer())
 }
 
@@ -70,4 +70,4 @@ Answer.defaultProps = {
   answer: "",
 }
 
-export {Question, Answer}
+export { Question, Answer }

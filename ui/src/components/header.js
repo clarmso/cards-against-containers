@@ -4,11 +4,11 @@ import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import { Grid } from "@material-ui/core"
 
-const useStyles = makeStyles(({
+const useStyles = makeStyles({
   header: {
     background: "#322923",
     color: "white",
-    borderRadius: "5px"
+    borderRadius: "5px",
   },
   gameName: {
     paddingTop: "20px",
@@ -20,7 +20,7 @@ const useStyles = makeStyles(({
     paddingLeft: "20px",
     paddingRight: "20px",
   },
-}))
+})
 
 const Header = ({ siteTitle, siteDescription }) => {
   const classes = useStyles()
