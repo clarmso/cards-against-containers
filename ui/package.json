@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "cards-against-containers",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "Pick randomly selected question and answer from a deck of cards against containers",
+  "version": "1.0",
+  "author": "Clare So",
   "dependencies": {
     "@material-ui/core": "4.11.0",
     "@material-ui/icons": "4.9.1",
@@ -29,6 +29,7 @@
     "pretty-quick": "3.1.0"
   },
   "keywords": [
+    "cards against containers",
     "gatsby"
   ],
   "license": "0BSD",
