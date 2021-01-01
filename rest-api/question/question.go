@@ -131,6 +131,6 @@ func GetRandomQuestionV1(w http.ResponseWriter, r *http.Request) {
 	randomQuestion := question[questionIndex]
 	numAnswer := int(math.Max(float64(strings.Count(randomQuestion, "________")), 1.0))
 	response := ResponseQuestion{Index: questionIndex, Question: randomQuestion, NumAnswer: numAnswer}
-	log.Printf("Index = %d. Random question: %s, Number of answers: %d", response.Index, response.Question, response.NumAnswer)
+	log.Printf("Index = %d. Random question: \"%s\" Number of answers: %d.", response.Index, response.Question, response.NumAnswer)
 	json.NewEncoder(w).Encode(response)
 }

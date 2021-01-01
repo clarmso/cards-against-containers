@@ -9,6 +9,17 @@ const useStyles = makeStyles({
   footer: {
     padding: "5px",
   },
+  srOnly: {
+    position: "absolute",
+    width: "1px",
+    height: "1px",
+    padding: "0",
+    margin: "-1px",
+    overflow: "hidden",
+    clip: "rect(0, 0, 0, 0)",
+    whiteSpace: "nowrap" /* added line */,
+    border: "0",
+  },
 })
 
 const Footer = ({ author, homepageLink, githubLink }) => {
@@ -20,11 +31,13 @@ const Footer = ({ author, homepageLink, githubLink }) => {
         <p>
           Made with{" "}
           <span role="img" aria-label="heart">
-            💖{" "}
+            <span className={classes.srOnly}>Love</span>
+            ❤️{" "}
           </span>{" "}
           by <a href={homepageLink}>{author}</a> © {new Date().getFullYear()}.{" "}
           <a href={githubLink}>
-            <GitHubIcon />
+            <span className={classes.srOnly}>Github Repo</span>
+            <GitHubIcon aria-label="github" />
           </a>
         </p>
       </footer>

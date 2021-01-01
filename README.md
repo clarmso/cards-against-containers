@@ -1,14 +1,20 @@
 # Cards Against Containers
 
-You can deploy your own microservices to return a random question or a random answer from the [Cards Against Containers](
-https://github.com/cardsagainstcontainers/deck) deck of cards!
+You can now get a random question and a random answer from [Cards Against Containers](https://github.com/cardsagainstcontainers/deck) deck of cards!
 
 ## REST API Server
 
-The rest_api/ directory contains the instruction, the code and the configuration files to test, build and deploy the server.  The currently supported endpoints are documented there as well.
+The [rest_api/](rest_api/) directory contains the code and the configuration files to test, build and deploy the REST API server the Google Cloud Platform.
 
-The currently supported enpoints are the following:
-* GET `/api/v1/question`
-* GET `/api/v1/answer`
+The currently supported enpoints are the following. As of v1, the endpoints return a random question and a random answer.
 
-## Web App (Todo!)
+- GET `/api/v1/question`
+- GET `/api/v1/answer`
+
+## Web Application
+
+The [ui/](ui/) directory contains the web application code and the configuration files to accompany the REST API server. The web application displays a random question and a random answer from Cards Against Containers.
+
+![Alt Text](ui/src/images/webapp.gif)
+
+See the deplolyed web application here: https://cards-against-containers.web.app/.

@@ -1,6 +1,6 @@
 # REST API Server for Cards Against Containers
 
-This directory contains the source files for the REST API server and the configuration files associated with it.
+This directory contains the source files for the REST API server and the configuration files for deploying the server to Google Cloud Platform.
 
 ## 🚀 Quick Start
 

@@ -1,5 +1,7 @@
 # Web Application for Cards Against Containers
 
+This directory contains the source files for the UI displaying a random question card and a random answer card.
+
 ## 🚀 Quick Start
 
 ### Run webapp locally
@@ -10,7 +12,11 @@ Node.js should be installed and configured.
 2. `npm install`
 3. `npm run develop` (or `gatsby develop`)
 
-## Deploy
+### Testing
+
+(Todo!)
+
+### Deploy
 
 Firebase project has been created and Firebase CLI should be installed. Please see [Google Firebase Documentation](https://firebase.google.com/docs/web/setup) for details.
 
