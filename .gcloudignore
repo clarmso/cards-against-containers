@@ -3,6 +3,7 @@
 .cache
 .firebase
 .eslintrc.json
+.eslintcache
 public
 node_modules
 cards-against-containers
