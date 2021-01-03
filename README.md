@@ -4,7 +4,7 @@ You can now get a random question and a random answer from [Cards Against Contai
 
 ## REST API Server
 
-The [rest_api/](rest_api/) directory contains the code and the configuration files to test, build and deploy the REST API server the Google Cloud Platform.
+The [rest_api](https://github.com/clarmso/cards-against-containers/tree/master/rest-api) directory contains the code and the configuration files to test, build and deploy the REST API server the Google Cloud Platform.
 
 The currently supported enpoints are the following. As of v1, the endpoints return a random question and a random answer.
 
@@ -13,7 +13,7 @@ The currently supported enpoints are the following. As of v1, the endpoints retu
 
 ## Web Application
 
-The [ui/](ui/) directory contains the web application code and the configuration files to accompany the REST API server. The web application displays a random question and a random answer from Cards Against Containers.
+The [ui](https://github.com/clarmso/cards-against-containers/tree/master/ui) directory contains the web application code, tests and the configuration files to accompany the REST API server. The web application displays a random question and a random answer from Cards Against Containers.
 
 ![Alt Text](ui/src/images/webapp.gif)
 
