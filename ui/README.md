@@ -26,7 +26,7 @@ Unit test (todo)
 
 Firebase project has been created. Please see [Google Firebase Documentation](https://firebase.google.com/docs/web/setup) for details.
 
-1. [Deploy REST API to Google Cloud Platform](../rest-API/README.md)
+1. Deploy the REST API.
 
 ```
 cd ..
