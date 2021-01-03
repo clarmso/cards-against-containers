@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 module.exports = {
   siteMetadata: {
     title: `Cards Against Containers`,

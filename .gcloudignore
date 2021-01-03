@@ -2,6 +2,7 @@
 .gitignore
 .cache
 .firebase
+.eslintrc.json
 public
 node_modules
 cards-against-containers
