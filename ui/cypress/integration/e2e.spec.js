@@ -16,7 +16,6 @@ describe("Sanity tests", () => {
     cy.contains("button", "Refresh").click()
     cy.wait("@v1APIquestion")
     cy.wait("@v1APIanswer")
-
     cy.contains("button", "Refresh").should("be.enabled")
     cy.get("[data-cy*='question-']").should("be.visible")
     cy.get("[data-cy*='answer-']").should("be.visible")
