@@ -10,7 +10,7 @@ This directory contains the source files for the REST API server and the configu
 
 1. `go build`
 2. `go test`
-3. `./card-against-containers-rest-api`
+3. `./cards-against-containers-rest-api`
 4. On a separate terminal: `curl http://localhost:8080/api/v1/answer` and `curl http://localhost:8080/api/v1/question`
 
 ### With Docker (Optional)

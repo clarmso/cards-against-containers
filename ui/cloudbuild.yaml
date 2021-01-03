@@ -1,0 +1,21 @@
+steps:
+  # Install dependencies for UI
+  - name: cypress/browsers:node12.18.3-chrome87-ff82
+    entrypoint: "npm"
+    args: ["ci"]
+    dir: "ui"
+  # Run unit tests (todo)
+  # Build UI
+  - name: cypress/browsers:node12.18.3-chrome87-ff82
+    entrypoint: "npm"
+    args: ["run", "build"]
+    dir: "ui"
+  # Run e2e Tests
+  - name: cypress/browsers:node12.18.3-chrome87-ff82
+    entrypoint: "npm"
+    args: ["run", "test:e2e:ci"]
+    dir: "ui"
+  # Deploy to Firebase
+  - name: gcr.io/cards-against-containers/firebase
+    args: ["deploy"]
+    dir: "ui"

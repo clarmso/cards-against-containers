@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"strings"
 
-	"card-against-containers-rest-api/answer"
-	"card-against-containers-rest-api/question"
+	"cards-against-containers-rest-api/answer"
+	"cards-against-containers-rest-api/question"
 
 	"github.com/gorilla/mux"
 )

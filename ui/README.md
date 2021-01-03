@@ -4,26 +4,42 @@ This directory contains the source files for the UI displaying a random question
 
 ## 🚀 Quick Start
 
+npm should be installed and configured.
+
 ### Run webapp locally
 
-Node.js should be installed and configured.
-
-1. [Run REST API server locally](../rest-api/README.md)
-2. `npm install`
-3. `npm run develop` (or `gatsby develop`)
+`npm start`
 
 ### Testing
 
-(Todo!)
+Unit test (todo)
+
+#### Run end-to-end tests on development build:
+
+`npm test`
+
+#### Run end-to-end tests on production build:
+
+`npm test:ci`
 
 ### Deploy
 
-Firebase project has been created and Firebase CLI should be installed. Please see [Google Firebase Documentation](https://firebase.google.com/docs/web/setup) for details.
+Firebase project has been created. Please see [Google Firebase Documentation](https://firebase.google.com/docs/web/setup) for details.
 
 1. [Deploy REST API to Google Cloud Platform](../rest-API/README.md)
-2. `firebase login`
-3. `npm run deploy` (or `gatsby build` and then `firebase deploy`)
 
-If all goes well, the web application is deployed on <project name>.web.app. See https://cards-against-containers.web.app/ for an example.
+```
+cd ..
+gcloud builds submit --config rest-api/cloudbuild.yaml --substitutions=_REGION="us-central1"
+```
+
+2. Deploy the UI.
+
+```
+cd ..
+gcloud build submit --config ui/cloudbuild.yaml .
+```
+
+If all goes well, the web application is deployed on `<project name>.web.app`. See https://cards-against-containers.web.app/ for an example.
 
 ![Alt Text](src/images/webapp.gif)

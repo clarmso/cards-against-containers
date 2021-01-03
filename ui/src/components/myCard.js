@@ -32,9 +32,13 @@ const useStylesAnswer = makeStyles({
   },
 })
 
-const myCard = (content, classes) => {
+const myCard = (content, classes, type) => {
   return (
-    <Card raised={true} className={classes.card}>
+    <Card
+      raised={true}
+      className={classes.card}
+      data-cy={type + "-" + content.replace(/[^\w]|_/g, "")}
+    >
       <CardContent className={classes.content}>
         {!content ? <CircularProgress size={20} /> : content}
       </CardContent>
@@ -47,11 +51,26 @@ const myCard = (content, classes) => {
 }
 
 const Question = ({ question }) => {
-  return myCard(question, useStylesQuestion())
+  return myCard(question, useStylesQuestion(), "question")
 }
 
 const Answer = ({ answer }) => {
-  return myCard(answer, useStylesAnswer())
+  return myCard(answer, useStylesAnswer(), "answer")
+}
+
+myCard.propTypes = {
+  content: PropTypes.string,
+  classes: PropTypes.object,
+  type: PropTypes.oneOf(["question", "answer"]),
+}
+
+myCard.defaultProps = {
+  content: "",
+  classes: makeStyles({
+    card: {},
+    content: {},
+  }),
+  type: "question",
 }
 
 Question.propTypes = {

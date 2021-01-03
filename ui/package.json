@@ -9,7 +9,7 @@
     "@material-ui/icons": "4.9.1",
     "@material-ui/styles": "4.10.0",
     "axios": "0.20.0",
-    "gatsby": "^2.24.54",
+    "gatsby": "^2.29.3",
     "gatsby-image": "^2.4.17",
     "gatsby-plugin-manifest": "^2.4.28",
     "gatsby-plugin-material-ui": "2.1.10",
@@ -24,30 +24,45 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
+    "@testing-library/cypress": "7.0.3",
+    "axe-core": "4.1.1",
+    "cypress": "6.2.0",
+    "cypress-axe": "0.12.0",
+    "firebase-tools": "8.18.0",
     "husky": "4.3.6",
+    "kill-port": "1.6.1",
     "prettier": "2.1.1",
-    "pretty-quick": "3.1.0"
+    "pretty-quick": "3.1.0",
+    "start-server-and-test": "1.11.7",
+    "wait-on": "5.2.1"
   },
   "keywords": [
-    "cards against containers",
-    "gatsby"
+    "Cards Against Containers"
   ],
-  "license": "0BSD",
+  "license": "CC BY-SA",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby clean; gatsby build",
+    "clean": "gatsby clean",
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run; npx cypress run --browser chrome; npx cypress run --browser firefox",
+    "cy:run:ci": "npx cypress run; npx cypress run --browser chrome --headless; npx cypress run --browser firefox --headless",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "gatsby develop",
-    "clean": "gatsby clean",
-    "deploy": "gatsby clean; gatsby build; firebase deploy",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "start": "npm run start-rest-api; npm run develop",
+    "start:ci": "kill-port --port 5000; npm run build; firebase serve",
+    "start-rest-api": "kill-port --port 8080; cd ../rest-api; go build; go test; ./cards-against-containers-rest-api & wait-on http-get://localhost:8080/api/v1/answer",
+    "stop": "kill-port --port 8080; kill-port --port 8000; kill-port --port 5000",
+    "test": "npm run test:e2e",
+    "test:ci": "npm run test:e2e:ci",
+    "test:e2e": "start-server-and-test start http://localhost:8000 cy:run",
+    "test:e2e:ci": "CYPRESS_BASE_URL=http://localhost:5000 start-server-and-test start:ci http://localhost:5000 cy:run:ci"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/clarmso/cards-against-containers/"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/clarmso/cards-against-containers/issues"
   },
   "husky": {
     "hooks": {

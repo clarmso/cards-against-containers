@@ -20,6 +20,9 @@ const useStyles = makeStyles({
     whiteSpace: "nowrap" /* added line */,
     border: "0",
   },
+  icon: {
+    color: "#000000",
+  },
 })
 
 const Footer = ({ author, homepageLink, githubLink }) => {
@@ -37,7 +40,7 @@ const Footer = ({ author, homepageLink, githubLink }) => {
           by <a href={homepageLink}>{author}</a> © {new Date().getFullYear()}.{" "}
           <a href={githubLink}>
             <span className={classes.srOnly}>Github Repo</span>
-            <GitHubIcon aria-label="github" />
+            <GitHubIcon className={classes.icon} aria-label="github" />
           </a>
         </p>
       </footer>
