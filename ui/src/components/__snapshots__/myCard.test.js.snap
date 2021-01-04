@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Display a question card 1`] = `
+<div
+  className="MuiPaper-root MuiCard-root makeStyles-card-1 MuiPaper-elevation8 MuiPaper-rounded"
+  data-cy="question-WhatisStratfordON"
+>
+  <div
+    className="MuiCardContent-root makeStyles-content-2"
+  >
+    What is Stratford ON?
+  </div>
+  <div
+    className="MuiCardActions-root MuiCardActions-spacing"
+  >
+    <svg
+      aria-hidden={true}
+      className="MuiSvgIcon-root"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"
+      />
+    </svg>
+    <span>
+      Cards Against Containers
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Display a question card without any content 1`] = `
+<div
+  className="MuiPaper-root MuiCard-root makeStyles-card-1 MuiPaper-elevation8 MuiPaper-rounded"
+  data-cy="question-"
+>
+  <div
+    className="MuiCardContent-root makeStyles-content-2"
+  >
+    <div
+      className="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+      role="progressbar"
+      style={
+        Object {
+          "height": 20,
+          "width": 20,
+        }
+      }
+    >
+      <svg
+        className="MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+          cx={44}
+          cy={44}
+          fill="none"
+          r={20.2}
+          strokeWidth={3.6}
+          style={Object {}}
+        />
+      </svg>
+    </div>
+  </div>
+  <div
+    className="MuiCardActions-root MuiCardActions-spacing"
+  >
+    <svg
+      aria-hidden={true}
+      className="MuiSvgIcon-root"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"
+      />
+    </svg>
+    <span>
+      Cards Against Containers
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Display an answer card 1`] = `
+<div
+  className="MuiPaper-root MuiCard-root makeStyles-card-3 MuiPaper-elevation8 MuiPaper-rounded"
+  data-cy="answer-TheswanisasymbolofthisOntariocityEachyearwhiteblackswansarereleasedintotheAvonRiver"
+>
+  <div
+    className="MuiCardContent-root makeStyles-content-4"
+  >
+    The swan is a symbol of this Ontario city; Each year, white & black swans are released into the Avon River.
+  </div>
+  <div
+    className="MuiCardActions-root MuiCardActions-spacing"
+  >
+    <svg
+      aria-hidden={true}
+      className="MuiSvgIcon-root"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"
+      />
+    </svg>
+    <span>
+      Cards Against Containers
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Display an answer card without any content 1`] = `
+<div
+  className="MuiPaper-root MuiCard-root makeStyles-card-3 MuiPaper-elevation8 MuiPaper-rounded"
+  data-cy="answer-"
+>
+  <div
+    className="MuiCardContent-root makeStyles-content-4"
+  >
+    <div
+      className="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+      role="progressbar"
+      style={
+        Object {
+          "height": 20,
+          "width": 20,
+        }
+      }
+    >
+      <svg
+        className="MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+          cx={44}
+          cy={44}
+          fill="none"
+          r={20.2}
+          strokeWidth={3.6}
+          style={Object {}}
+        />
+      </svg>
+    </div>
+  </div>
+  <div
+    className="MuiCardActions-root MuiCardActions-spacing"
+  >
+    <svg
+      aria-hidden={true}
+      className="MuiSvgIcon-root"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"
+      />
+    </svg>
+    <span>
+      Cards Against Containers
+    </span>
+  </div>
+</div>
+`;
