@@ -1,32 +1,21 @@
 import React, { useState, useEffect } from "react"
 
-import axios from "axios"
-
 import { Button, CircularProgress, Grid } from "@material-ui/core"
 import RefreshIcon from "@material-ui/icons/Refresh"
 
 import { Question, Answer } from "./myCard"
+import { getAnswerV1, getQuestionV1 } from "../utilities/api"
 
 const updateAllCards = async (setQuestion, setAnswer, setLoading) => {
   setLoading(true)
-
-  let numAnswer
-  await axios.get("/api/v1/question").then(response => {
-    const question = response.data.question
-    numAnswer = response.data.numAnswer
-    setQuestion(question)
-  })
-
   let allAnswers = []
-  while (numAnswer > 0) {
-    await axios.get("/api/v1/answer").then(response => {
-      const answer = response.data.answer
-      allAnswers.push(answer)
-    })
-    numAnswer--
+  const { numAnswer, question } = await getQuestionV1()
+  allAnswers.push(await getAnswerV1())
+  while (numAnswer > allAnswers.length) {
+    allAnswers.push(await getAnswerV1())
   }
+  setQuestion(question)
   setAnswer(allAnswers)
-
   setLoading(false)
 }
 

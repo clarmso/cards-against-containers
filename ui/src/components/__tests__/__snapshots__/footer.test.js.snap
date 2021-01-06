@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Display Footer with author, homepage link and github link 1`] = `
+exports[`<Footer /> Display Footer with author, homepage link and github link 1`] = `
 <div
   className="MuiGrid-root"
 >
@@ -59,7 +59,7 @@ exports[`Display Footer with author, homepage link and github link 1`] = `
 </div>
 `;
 
-exports[`Display Footer with default parameters 1`] = `
+exports[`<Footer /> Display Footer with default parameters 1`] = `
 <div
   className="MuiGrid-root"
 >

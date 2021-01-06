@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Display a header with title and description 1`] = `
+exports[`<Header /> Display a header with title and description 1`] = `
 <div
   className="MuiGrid-root makeStyles-header-1 MuiGrid-item"
 >
@@ -17,7 +17,7 @@ exports[`Display a header with title and description 1`] = `
 </div>
 `;
 
-exports[`Display a header without any content 1`] = `
+exports[`<Header /> Display a header without any content 1`] = `
 <div
   className="MuiGrid-root makeStyles-header-1 MuiGrid-item"
 >

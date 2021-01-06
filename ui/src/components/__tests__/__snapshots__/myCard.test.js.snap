@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Display a question card 1`] = `
+exports[`Cards <Answer /> Display an answer card 1`] = `
 <div
-  className="MuiPaper-root MuiCard-root makeStyles-card-1 MuiPaper-elevation8 MuiPaper-rounded"
-  data-cy="question-WhatisStratfordON"
+  className="MuiPaper-root MuiCard-root makeStyles-card-3 MuiPaper-elevation8 MuiPaper-rounded"
+  data-cy="answer-TheswanisasymbolofthisOntariocityEachyearwhiteblackswansarereleasedintotheAvonRiver"
 >
   <div
-    className="MuiCardContent-root makeStyles-content-2"
+    className="MuiCardContent-root makeStyles-content-4"
   >
-    What is Stratford ON?
+    The swan is a symbol of this Ontario city; Each year, white & black swans are released into the Avon River.
   </div>
   <div
     className="MuiCardActions-root MuiCardActions-spacing"
@@ -30,13 +30,13 @@ exports[`Display a question card 1`] = `
 </div>
 `;
 
-exports[`Display a question card without any content 1`] = `
+exports[`Cards <Answer /> Display an answer card without any content 1`] = `
 <div
-  className="MuiPaper-root MuiCard-root makeStyles-card-1 MuiPaper-elevation8 MuiPaper-rounded"
-  data-cy="question-"
+  className="MuiPaper-root MuiCard-root makeStyles-card-3 MuiPaper-elevation8 MuiPaper-rounded"
+  data-cy="answer-"
 >
   <div
-    className="MuiCardContent-root makeStyles-content-2"
+    className="MuiCardContent-root makeStyles-content-4"
   >
     <div
       className="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
@@ -84,15 +84,15 @@ exports[`Display a question card without any content 1`] = `
 </div>
 `;
 
-exports[`Display an answer card 1`] = `
+exports[`Cards <Question /> Display a question card 1`] = `
 <div
-  className="MuiPaper-root MuiCard-root makeStyles-card-3 MuiPaper-elevation8 MuiPaper-rounded"
-  data-cy="answer-TheswanisasymbolofthisOntariocityEachyearwhiteblackswansarereleasedintotheAvonRiver"
+  className="MuiPaper-root MuiCard-root makeStyles-card-1 MuiPaper-elevation8 MuiPaper-rounded"
+  data-cy="question-WhatisStratfordON"
 >
   <div
-    className="MuiCardContent-root makeStyles-content-4"
+    className="MuiCardContent-root makeStyles-content-2"
   >
-    The swan is a symbol of this Ontario city; Each year, white & black swans are released into the Avon River.
+    What is Stratford ON?
   </div>
   <div
     className="MuiCardActions-root MuiCardActions-spacing"
@@ -114,13 +114,13 @@ exports[`Display an answer card 1`] = `
 </div>
 `;
 
-exports[`Display an answer card without any content 1`] = `
+exports[`Cards <Question /> Display a question card without any content 1`] = `
 <div
-  className="MuiPaper-root MuiCard-root makeStyles-card-3 MuiPaper-elevation8 MuiPaper-rounded"
-  data-cy="answer-"
+  className="MuiPaper-root MuiCard-root makeStyles-card-1 MuiPaper-elevation8 MuiPaper-rounded"
+  data-cy="question-"
 >
   <div
-    className="MuiCardContent-root makeStyles-content-4"
+    className="MuiCardContent-root makeStyles-content-2"
   >
     <div
       className="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
