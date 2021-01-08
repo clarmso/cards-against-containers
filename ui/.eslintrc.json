@@ -6,6 +6,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:jest/recommended",
+    "plugin:jest-dom/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended"
@@ -17,7 +18,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["jest", "jsx-a11y", "import", "react", "react-hooks"],
+  "plugins": ["jest", "jest-dom", "jsx-a11y", "import", "react", "react-hooks"],
   "rules": {},
   "settings": {
     "react": {

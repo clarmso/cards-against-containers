@@ -1,9 +1,15 @@
 import React from "react"
 import {
+  cleanup,
+  fireEvent,
   render,
-  waitFor,
+  screen,
   waitForElementToBeRemoved,
 } from "@testing-library/react"
+import {
+  toBeEnabled, // eslint-disable-line no-unused-vars
+  toBeVisible, // eslint-disable-line no-unused-vars
+} from "@testing-library/jest-dom" // eslint-disable-line no-unused-vars
 import CardsAgainstContainers from "../cardsAgainstContainers"
 import axios from "axios"
 import MockAdapter from "axios-mock-adapter"
@@ -13,6 +19,7 @@ describe("<CardsAgainstContainers />", () => {
 
   beforeEach(() => {
     mock.resetHandlers()
+    cleanup()
   })
 
   test("Display a question card and an answer card", async () => {
@@ -27,36 +34,71 @@ describe("<CardsAgainstContainers />", () => {
       index: 42,
       answer,
     })
-    const { getAllByRole, getByText } = render(<CardsAgainstContainers />)
+    const { getAllByRole } = render(<CardsAgainstContainers />)
     await waitForElementToBeRemoved(() => getAllByRole("progressbar"))
-    await waitFor(() => getByText(question))
-    await waitFor(() => getByText(answer))
+    expect(screen.getByText(question)).toBeVisible()
+    expect(screen.getByText(answer)).toBeVisible()
   })
 
   test("Display a question card and multiple answer cards", async () => {
     const question =
       "2 of the 4 provinces that formed the new Dominion of Canada in 1867."
-    const answers = ["Ontario", "Quebec", "New Brunswick", "Nova Scotia"]
+    const answer = ["Ontario", "Quebec", "New Brunswick", "Nova Scotia"]
     mock
       .onGet("/api/v1/answer")
-      .replyOnce(200, { index: 0, answer: answers[0] })
+      .replyOnce(200, { index: 0, answer: answer[0] })
       .onGet("/api/v1/answer")
-      .replyOnce(200, { index: 1, answer: answers[1] })
+      .replyOnce(200, { index: 1, answer: answer[1] })
       .onGet("/api/v1/answer")
-      .replyOnce(200, { index: 2, answer: answers[2] })
+      .replyOnce(200, { index: 2, answer: answer[2] })
       .onGet("/api/v1/answer")
-      .replyOnce(200, { index: 3, answer: answers[3] })
+      .replyOnce(200, { index: 3, answer: answer[3] })
     mock.onGet("/api/v1/question").reply(200, {
       index: 42,
       question,
       numAnswer: 4,
     })
+    const { getAllByRole } = render(<CardsAgainstContainers />)
+    await waitForElementToBeRemoved(() => getAllByRole("progressbar"))
+    expect(screen.getByText(question)).toBeVisible()
+    expect(screen.getByText(answer[0])).toBeVisible()
+    expect(screen.getByText(answer[1])).toBeVisible()
+    expect(screen.getByText(answer[2])).toBeVisible()
+    expect(screen.getByText(answer[3])).toBeVisible()
+  })
+
+  test("Click refresh button fetches a new card combination", async () => {
+    const question = [
+      "Who was Canada's first prime minister?",
+      "Which Great Lake is not in Canada?",
+    ]
+    const answer = ["Who is Sir John A. MacDonald.", "What is Lake Michigan."]
+    mock
+      .onGet("/api/v1/answer")
+      .replyOnce(200, { index: 0, answer: answer[0] })
+      .onGet("/api/v1/answer")
+      .replyOnce(200, { index: 1, answer: answer[1] })
+    mock
+      .onGet("/api/v1/question")
+      .replyOnce(200, {
+        index: 42,
+        question: question[0],
+        numAnswer: 1,
+      })
+      .onGet("/api/v1/question")
+      .replyOnce(200, {
+        index: 42,
+        question: question[1],
+        numAnswer: 1,
+      })
     const { getAllByRole, getByText } = render(<CardsAgainstContainers />)
     await waitForElementToBeRemoved(() => getAllByRole("progressbar"))
-    await waitFor(() => getByText(question))
-    await waitFor(() => getByText(answers[0]))
-    await waitFor(() => getByText(answers[1]))
-    await waitFor(() => getByText(answers[2]))
-    await waitFor(() => getByText(answers[3]))
+    expect(screen.getByText(question[0])).toBeVisible()
+    expect(screen.getByText(answer[0])).toBeVisible()
+    fireEvent.click(getByText("Refresh"))
+    await waitForElementToBeRemoved(() => getAllByRole("progressbar"))
+    expect(screen.getByText(question[1])).toBeVisible()
+    expect(screen.getByText(answer[1])).toBeVisible()
+    expect(screen.getByText("Refresh")).toBeEnabled()
   })
 })
