@@ -17,9 +17,14 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: cd ui/
-    - run: npm ci
-    - run: npm run build
-    - run: npm test:ci
+    - name: Install dependencies
+      run: npm ci
+      working-directory:  ./ui
+    - name: Build production version of UI
+      run: npm run build 
+      working-directory: ./ui
+    - name: Run unit tests and e2e tests 
+      run: npm test:ci
+      working-directory: ./ui
       env:
         CI: true
