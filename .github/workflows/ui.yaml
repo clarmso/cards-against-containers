@@ -52,5 +52,6 @@ jobs:
         browser: chrome
         headless: true
         working-directory: ui
+        config: baseUrl=http://localhost:5000
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
