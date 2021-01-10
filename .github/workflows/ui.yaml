@@ -20,16 +20,19 @@ jobs:
     runs-on: ubuntu-20.04
 
     strategy:
+
       matrix:
-        node-version: [12.x]
         browser: [chrome, firefox, electron]
 
     steps:
+
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+
+    - name: Use Node.js 12.x
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 12.x
+
     - name: Cache node modules
       uses: actions/cache@v2
       env:
@@ -41,12 +44,16 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-      
+
     - name: Install dependencies
       run: npm ci
+
     - name: Build production code
       run: npm run build
+
     - name: Run unit tests
       run: npm run test:unit
+
     - name: Run e2e tests
       uses: cypress-io/github-action@v2
       with:
