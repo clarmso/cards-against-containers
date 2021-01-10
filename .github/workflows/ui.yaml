@@ -1,4 +1,4 @@
-name: Cards Against Containers CI (UI only)
+name: UI Push
 
 on: 
   push:

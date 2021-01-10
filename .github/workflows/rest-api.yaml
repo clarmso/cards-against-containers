@@ -1,4 +1,4 @@
-name: Cards Against Containers CI (REST API only)
+name: REST API Push
 
 on:
   push:
