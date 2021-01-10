@@ -13,10 +13,12 @@ steps:
   - name: cypress/browsers:node12.18.3-chrome87-ff82
     entrypoint: "npm"
     args: ["run", "test:unit"]
+    dir: "ui"
   # Start web application
   - name: cypress/browsers:node12.18.3-chrome87-ff82
     entrypoint: "npm"
     args: ["run", "start:ci"]
+    dir: "ui"
   # Run e2e tests (electron)
   - name: cypress/browsers:node12.18.3-chrome87-ff82
     entrypoint: "npx"
