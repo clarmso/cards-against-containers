@@ -71,7 +71,7 @@ jobs:
         config: baseUrl=http://localhost:5000
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        
+
     - name: Run e2e tests (firefox)
       uses: cypress-io/github-action@v2
       with:
@@ -82,4 +82,4 @@ jobs:
         working-directory: ./ui
         config: baseUrl=http://localhost:5000
       env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
