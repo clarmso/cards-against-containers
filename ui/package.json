@@ -68,7 +68,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run start-rest-api; npm run develop",
-    "start:ci": "firebase serve & wait-on http://localhost:5000",
+    "start:ci": "firebase serve --port 8000 & wait-on http://localhost:8000",
     "start-rest-api": "kill-port --port 8080; cd ../rest-api; go build; go test; ./cards-against-containers-rest-api & wait-on http-get://localhost:8080/api/v1/answer",
     "stop": "kill-port --port 8080; kill-port --port 8000; kill-port --port 5000",
     "test": "npm run test:unit; npm run test:e2e",
