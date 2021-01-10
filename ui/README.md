@@ -18,10 +18,6 @@ Unit test (todo)
 
 `npm test`
 
-#### Run end-to-end tests on production build:
-
-`npm test:ci`
-
 ### Deploy
 
 Firebase project has been created. Please see [Google Firebase Documentation](https://firebase.google.com/docs/web/setup) for details.
