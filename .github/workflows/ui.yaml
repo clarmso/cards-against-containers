@@ -22,6 +22,7 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
+        browser: [chrome, firefox, electron]
 
     steps:
     - uses: actions/checkout@v2
@@ -51,7 +52,7 @@ jobs:
       with:
         start: npx firebase serve
         wait-on: 'http://localhost:5000'
-        browser: chrome
+        browser: ${{ matrix.browser }}
         headless: true
         working-directory: ./ui
         config: baseUrl=http://localhost:5000
