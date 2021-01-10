@@ -19,11 +19,6 @@ jobs:
 
     runs-on: ubuntu-20.04
 
-    strategy:
-
-      matrix:
-        browser: [chrome, firefox, electron]
-
     steps:
 
     - uses: actions/checkout@v2
@@ -54,14 +49,37 @@ jobs:
     - name: Run unit tests
       run: npm run test:unit
 
-    - name: Run e2e tests
+    - name: Run e2e tests (electron)
       uses: cypress-io/github-action@v2
       with:
         start: npx firebase serve
         wait-on: 'http://localhost:5000'
-        browser: ${{ matrix.browser }}
         headless: true
         working-directory: ./ui
         config: baseUrl=http://localhost:5000
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+    - name: Run e2e tests (chrome)
+      uses: cypress-io/github-action@v2
+      with:
+        start: npx firebase serve
+        wait-on: 'http://localhost:5000'
+        browser: chrome
+        headless: true
+        working-directory: ./ui
+        config: baseUrl=http://localhost:5000
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        
+    - name: Run e2e tests (firefox)
+      uses: cypress-io/github-action@v2
+      with:
+        start: npx firebase serve
+        wait-on: 'http://localhost:5000'
+        browser: chrome
+        headless: true
+        working-directory: ./ui
+        config: baseUrl=http://localhost:5000
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }
