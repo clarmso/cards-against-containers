@@ -9,10 +9,28 @@ steps:
     entrypoint: "npm"
     args: ["run", "build"]
     dir: "ui"
-  # Run unit tests and e2e tests
+  # Run unitests
   - name: cypress/browsers:node12.18.3-chrome87-ff82
     entrypoint: "npm"
-    args: ["run", "test:ci"]
+    args: ["run", "test:unit"]
+  # Start web application
+  - name: cypress/browsers:node12.18.3-chrome87-ff82
+    entrypoint: "npm"
+    args: ["run", "start:ci"]
+  # Run e2e tests (electron)
+  - name: cypress/browsers:node12.18.3-chrome87-ff82
+    entrypoint: "npx"
+    args: ["cypress", "run", "--headless"]
+    dir: "ui"
+  # Run e2e tests (chrome)
+  - name: cypress/browsers:node12.18.3-chrome87-ff82
+    entrypoint: "npx"
+    args: ["cypress", "run", "--browser", "chrome", "--headless"]
+    dir: "ui"
+  # Run e2e tests (firefox)
+  - name: cypress/browsers:node12.18.3-chrome87-ff82
+    entrypoint: "npx"
+    args: ["cypress", "run", "--browser", "firefox", "--headless"]
     dir: "ui"
   # Deploy to Firebase
   - name: gcr.io/cards-against-containers/firebase
