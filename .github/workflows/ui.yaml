@@ -49,7 +49,7 @@ jobs:
     - name: Run e2e tests
       uses: cypress-io/github-action@v2
       with:
-        start: firebase serve
+        start: npx firebase serve
         wait-on: 'http://localhost:5000'
         browser: chrome
         headless: true
