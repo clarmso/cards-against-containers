@@ -33,7 +33,7 @@ gcloud builds submit --config rest-api/cloudbuild.yaml --substitutions=_REGION="
 
 ```
 cd ..
-gcloud build submit --config ui/cloudbuild.yaml .
+gcloud builds submit --config ui/cloudbuild.yaml .
 ```
 
 If all goes well, the web application is deployed on `<project name>.web.app`. See https://cards-against-containers.web.app/ for an example.
