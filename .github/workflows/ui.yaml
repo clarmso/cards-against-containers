@@ -5,10 +5,6 @@ on:
     paths-ignore:
     - 'rest-api/**'
     - '**/*.md'
-  pull_request:
-    paths-ignore:
-    - 'rest-api/**'
-    - '**/*.md'
 
 defaults:
   run:
