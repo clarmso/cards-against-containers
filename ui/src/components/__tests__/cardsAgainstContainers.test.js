@@ -26,7 +26,7 @@ describe("<CardsAgainstContainers />", () => {
     const question = "What is the largest Great Lake?"
     const answer = "What is Lake Superior."
     mock.onGet("/api/v1/question").reply(200, {
-      index: 22,
+      index: 42,
       question,
       numAnswer: 1,
     })
