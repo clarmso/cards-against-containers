@@ -51,6 +51,6 @@ jobs:
         wait-on: 'http://localhost:5000'
         browser: chrome
         headless: true
-        working-directory: ./ui
+        working-directory: ui
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
