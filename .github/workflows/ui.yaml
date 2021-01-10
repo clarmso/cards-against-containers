@@ -3,7 +3,7 @@ name: Cards Against Container CI (UI only)
 on: 
   push:
     paths-ignore:
-    - 'rest-api/**'
+    - './rest-api/**'
     - '**/*.md'
 
 defaults:
