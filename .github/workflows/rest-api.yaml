@@ -1,0 +1,31 @@
+name: Cards Against Container CI (REST API only)
+
+on:
+  push:
+    paths-ignore:
+    - 'ui/**'
+    - '**/*.md'
+
+defaults:
+  run:
+    working-directory: ./rest-api
+
+jobs:
+  build:
+
+    runs-on: ubuntu-20.04
+
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - name: Use golang
+      uses: actions/setup-go@v1
+      with:
+        go-version: '^1.15.6'
+
+    - name: Run tests
+      run: go test
+
+    - name: Run build
+      run: go build -i cards-against-containers-rest-api .
