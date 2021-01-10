@@ -42,16 +42,18 @@ jobs:
           ${{ runner.os }}-      
     - name: Install dependencies
       run: npm ci
+    - name: Build production code
+      run: npm run build
     - name: Run unit tests
       run: npm run test:unit
-    - name: Build production code and start server
+    - name: Run e2e tests
       uses: cypress-io/github-action@v2
       with:
-        start: npm run start:ci
+        start: firebase serve
         wait-on: 'http://localhost:5000'
         browser: chrome
         headless: true
-        working-directory: ui
+        working-directory: ./ui
         config: baseUrl=http://localhost:5000
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
