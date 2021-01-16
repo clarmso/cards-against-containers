@@ -76,13 +76,3 @@ jobs:
           config: baseUrl=http://localhost:5000
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-
-      - name: Run Percy visual tests
-        uses: percy/exec-action@v0.3.1
-        with:
-          working-directory: ./ui
-          custom-command: npm run start:ci && wait-on http://localhost:5000
-          command: cypress run
-        env:
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          CYPRESS_BASE_URL: http://localhost:5000
