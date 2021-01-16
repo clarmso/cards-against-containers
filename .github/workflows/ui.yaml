@@ -3,6 +3,7 @@ name: UI
 on:
   push:
     paths:
+      - ".github/workflows/ui.yaml"
       - "ui/**"
       - "!**/*.md"
 

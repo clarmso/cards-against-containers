@@ -3,6 +3,7 @@ name: REST API
 on:
   push:
     paths:
+      - ".github/workflows/rest-api.yaml"
       - "rest-api/**"
       - "!**/*.md"
 
