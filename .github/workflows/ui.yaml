@@ -3,6 +3,7 @@ name: UI
 on:
   push:
     paths:
+      - ".github/workflows/ui.yaml"
       - "ui/**"
       - "!**/*.md"
 
@@ -13,7 +14,6 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-20.04
-
     steps:
       - uses: actions/checkout@v2
 
@@ -39,10 +39,6 @@ jobs:
       - name: Build production code
         run: npm run build
 
-  test:
-    runs-on: ubuntu-20.04
-
-    steps:
       - name: Run unit tests
         run: npm run test:unit
 
@@ -80,12 +76,3 @@ jobs:
           config: baseUrl=http://localhost:5000
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-
-      - name: Run Percy visual tests
-        uses: percy/exec-action@v0.3.1
-        with:
-          custom-command: npm run start:ci & wait-on http://localhost:5000
-          command: cypress run
-        env:
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          CYPRESS_BASE_URL: http://localhost:5000
