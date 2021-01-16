@@ -23,7 +23,7 @@ describe("Sanity tests", () => {
 
   it("displays question and answer cards fetched from the REST API", () => {
     const FAKE_QUESTION = "Which province was the last to join Canada in 1949?"
-    const FAKE_ANSWER = "What is Newfoundland and Labrador?"
+    const FAKE_ANSWER = "What is Newfoundland and Labrador? "
     cy.intercept("GET", "/api/v1/answer", req => {
       req.reply({ index: 1, answer: FAKE_ANSWER })
     })
