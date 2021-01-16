@@ -14,7 +14,6 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-20.04
-
     steps:
       - uses: actions/checkout@v2
 
@@ -40,12 +39,6 @@ jobs:
       - name: Build production code
         run: npm run build
 
-  test:
-    needs: build
-
-    runs-on: ubuntu-20.04
-
-    steps:
       - name: Run unit tests
         run: npm run test:unit
 
