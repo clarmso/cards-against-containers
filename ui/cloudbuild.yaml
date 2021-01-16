@@ -32,12 +32,6 @@ steps:
     args: ["run", "test:e2e:ci:firefox"]
     dir: "ui"
     env: ["CYPRESS_BASE_URL=http://localhost:5000"]
-  # Run Percy visual tests
-  - name: cypress/browsers:node12.18.3-chrome87-ff82
-    entrypoint: "npm"
-    args: ["run", "test:e2e:ci:percy"]
-    dir: "ui"
-    env: ["CYPRESS_BASE_URL=http://localhost:5000"]
   # Deploy to Firebase
   - name: gcr.io/cards-against-containers/firebase
     args: ["deploy"]
