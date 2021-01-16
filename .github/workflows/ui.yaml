@@ -80,7 +80,8 @@ jobs:
       - name: Run Percy visual tests
         uses: percy/exec-action@v0.3.1
         with:
-          custom-command: cd ./ui; npm run start:ci & wait-on http://localhost:5000
+          working-directory: ./ui
+          custom-command: npm run start:ci & wait-on http://localhost:5000
           command: cypress run
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
