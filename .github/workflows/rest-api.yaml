@@ -1,10 +1,10 @@
-name: REST API Push
+name: REST API
 
 on:
   push:
     paths:
-    - 'rest-api/**'
-    - '!**/*.md'
+      - "rest-api/**"
+      - "!**/*.md"
 
 defaults:
   run:
@@ -12,20 +12,18 @@ defaults:
 
 jobs:
   build:
-
     runs-on: ubuntu-20.04
 
     steps:
+      - uses: actions/checkout@v2
 
-    - uses: actions/checkout@v2
+      - name: Use golang
+        uses: actions/setup-go@v1
+        with:
+          go-version: "^1.15.6"
 
-    - name: Use golang
-      uses: actions/setup-go@v1
-      with:
-        go-version: '^1.15.6'
+      - name: Run tests
+        run: go test
 
-    - name: Run tests
-      run: go test
-
-    - name: Run build
-      run: go build -i cards-against-containers-rest-api .
+      - name: Run build
+        run: go build -i cards-against-containers-rest-api .

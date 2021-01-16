@@ -1,10 +1,10 @@
-name: UI Push
+name: UI
 
-on: 
+on:
   push:
     paths:
-    - 'ui/**'
-    - '!**/*.md'
+      - "ui/**"
+      - "!**/*.md"
 
 defaults:
   run:
@@ -12,70 +12,80 @@ defaults:
 
 jobs:
   build:
-
     runs-on: ubuntu-20.04
 
     steps:
+      - uses: actions/checkout@v2
 
-    - uses: actions/checkout@v2
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
 
-    - name: Use Node.js 12.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: 12.x
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('ui/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
-    - name: Cache node modules
-      uses: actions/cache@v2
-      env:
-        cache-name: cache-node-modules
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('ui/package-lock.json') }}
-        restore-keys:
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-      
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Install dependencies
-      run: npm ci
+      - name: Build production code
+        run: npm run build
 
-    - name: Build production code
-      run: npm run build
+  test:
+    runs-on: ubuntu-20.04
 
-    - name: Run unit tests
-      run: npm run test:unit
+    steps:
+      - name: Run unit tests
+        run: npm run test:unit
 
-    - name: Run e2e tests (electron)
-      uses: cypress-io/github-action@v2
-      with:
-        start: npx firebase serve
-        wait-on: 'http://localhost:5000'
-        headless: true
-        working-directory: ./ui
-        config: baseUrl=http://localhost:5000
-      env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - name: Run e2e tests (electron)
+        uses: cypress-io/github-action@v2
+        with:
+          start: npm run start:ci
+          wait-on: http://localhost:5000
+          headless: true
+          working-directory: ./ui
+          config: baseUrl=http://localhost:5000
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
-    - name: Run e2e tests (chrome)
-      uses: cypress-io/github-action@v2
-      with:
-        start: npx firebase serve
-        wait-on: 'http://localhost:5000'
-        browser: chrome
-        headless: true
-        working-directory: ./ui
-        config: baseUrl=http://localhost:5000
-      env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - name: Run e2e tests (chrome)
+        uses: cypress-io/github-action@v2
+        with:
+          start: npm run start:ci
+          wait-on: http://localhost:5000
+          browser: chrome
+          headless: true
+          working-directory: ./ui
+          config: baseUrl=http://localhost:5000
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
-    - name: Run e2e tests (firefox)
-      uses: cypress-io/github-action@v2
-      with:
-        start: npx firebase serve
-        wait-on: 'http://localhost:5000'
-        browser: chrome
-        headless: true
-        working-directory: ./ui
-        config: baseUrl=http://localhost:5000
-      env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - name: Run e2e tests (firefox)
+        uses: cypress-io/github-action@v2
+        with:
+          start: npm run start:ci
+          wait-on: http://localhost:5000
+          browser: chrome
+          headless: true
+          working-directory: ./ui
+          config: baseUrl=http://localhost:5000
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Run Percy visual tests
+        uses: percy/exec-action@0.3.1
+        with:
+          custom-command: npm run start:ci & wait-on http://localhost:5000
+          command: cypress run
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          CYPRESS_BASE_URL: http://localhost:5000

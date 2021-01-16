@@ -1,10 +1,13 @@
 {
   "env": {
     "browser": true,
+    "cypress/globals": true,
+    "jest/globals": true,
     "es2021": true
   },
   "extends": [
     "eslint:recommended",
+    "plugin:cypress/recommended",
     "plugin:jest/recommended",
     "plugin:jest-dom/recommended",
     "plugin:jsx-a11y/recommended",
@@ -18,11 +21,28 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["jest", "jest-dom", "jsx-a11y", "import", "react", "react-hooks"],
+  "plugins": [
+    "cypress",
+    "jest",
+    "jest-dom",
+    "jsx-a11y",
+    "import",
+    "react",
+    "react-hooks"
+  ],
   "rules": {},
   "settings": {
     "react": {
       "version": "detect"
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": ["cypress/**/*.spec.js"],
+      "rules": {
+        "jest/expect-expect": 0,
+        "jest/valid-expect-in-promise": 0
+      }
+    }
+  ]
 }
