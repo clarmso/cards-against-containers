@@ -44,11 +44,7 @@ jobs:
         with:
           name: repo
           path: |
-            ui/
-            ui/*.js
-            ui/*.json
-            ui/src/**
-            ui/public/**
+            ui/**
             !ui/node_modules/**
 
   unit-tests:
@@ -75,67 +71,9 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: repo
+      - name: Echo download path ${{steps.download.outputs.download-path}}
+        run: echo ${{steps.download.outputs.download-path}}
       - run: npm ci
+        working-directory: ./ui
       - run: npm run test:unit
-
-  e2e-electron:
-    name: Run end-to-end tests (Electron)
-    needs: build
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Fetch build
-        uses: actions/download-artifact@v2
-        with:
-          name: repo
-      - name: Run e2e tests (electron)
-        uses: cypress-io/github-action@v2
-        with:
-          start: npm run start:ci
-          wait-on: http://localhost:5000
-          headless: true
-          working-directory: ./ui
-          config: baseUrl=http://localhost:5000
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-
-  e2e-chrome:
-    name: Run end-to-end tests (Chrome)
-    needs: build
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Fetch build
-        uses: actions/download-artifact@v2
-        with:
-          name: repo
-      - name: Run e2e tests (chrome)
-        uses: cypress-io/github-action@v2
-        with:
-          start: npm run start:ci
-          wait-on: http://localhost:5000
-          browser: chrome
-          headless: true
-          working-directory: ./ui
-          config: baseUrl=http://localhost:5000
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-
-  e2e-firefox:
-    name: Run end-to-end tests (Firefox)
-    needs: build
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Fetch build
-        uses: actions/download-artifact@v2
-        with:
-          name: repo
-      - name: Run e2e tests (firefox)
-        uses: cypress-io/github-action@v2
-        with:
-          start: npm run start:ci
-          wait-on: http://localhost:5000
-          browser: chrome
-          headless: true
-          working-directory: ./ui
-          config: baseUrl=http://localhost:5000
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        working-directory: ./ui
