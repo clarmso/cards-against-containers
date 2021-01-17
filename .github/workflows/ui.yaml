@@ -56,8 +56,11 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: repo
+      - run: ls -R
       - run: npm ci
+        working-directory: ./ui
       - run: npm run test:unit
+        working-directory: ./ui
 
   e2e-electron:
     name: Run end-to-end tests (Electron)
