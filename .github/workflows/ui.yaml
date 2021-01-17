@@ -42,14 +42,18 @@ jobs:
       - name: Upload build files 
         uses: actions/upload-artifact@v2
         with:
-          name: public
-          path: ~/ui/public
+          name: repo
+          path: ./ui
 
   unit-tests:
     name: Run React component unit tests
     needs: build
     runs-on: ubuntu-20.04
     steps:
+      - name: Fetch build
+        uses: actions/download-artifact@v2
+        with:
+          name: repo
       - run: npm ci
       - run: npm run test:unit
 
@@ -61,7 +65,7 @@ jobs:
       - name: Fetch build
         uses: actions/download-artifact@v2
         with:
-          name: public
+          name: repo
       - name: Run e2e tests (electron)
         uses: cypress-io/github-action@v2
         with:
@@ -81,7 +85,7 @@ jobs:
       - name: Fetch build
         uses: actions/download-artifact@v2
         with:
-          name: public
+          name: repo
       - name: Run e2e tests (chrome)
         uses: cypress-io/github-action@v2
         with:
@@ -102,7 +106,7 @@ jobs:
       - name: Fetch build
         uses: actions/download-artifact@v2
         with:
-          name: public
+          name: repo
       - name: Run e2e tests (firefox)
         uses: cypress-io/github-action@v2
         with:
