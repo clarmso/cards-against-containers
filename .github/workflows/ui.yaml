@@ -43,14 +43,13 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: public
-          path: public
+          path: ~/ui/public
 
   unit-tests:
     name: Run React component unit tests
     needs: build
     runs-on: ubuntu-20.04
     steps:
-      - run: ls
       - run: npm ci
       - run: npm run test:unit
 
