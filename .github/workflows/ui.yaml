@@ -33,11 +33,11 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - name: Install dependencies
-        run: npm ci
+      #- name: Install dependencies
+      #  run: npm ci
 
-      - name: Build production code
-        run: npm run build
+      #- name: Build production code
+      #  run: npm run build
 
       - name: Upload build files 
         uses: actions/upload-artifact@v2
@@ -56,16 +56,16 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - name: Cache node modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('ui/package-lock.json') }}
-          restore-keys: ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+      #- name: Cache node modules
+      #  uses: actions/cache@v2
+      #  env:
+      #    cache-name: cache-node-modules
+      #  with:
+      #    path: ~/.npm
+      #    key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('ui/package-lock.json') }}
+      #    restore-keys: ${{ runner.os }}-build-${{ env.cache-name }}-
+      #      ${{ runner.os }}-build-
+      #      ${{ runner.os }}-
       - name: Fetch build
         id: download
         uses: actions/download-artifact@v2
@@ -74,6 +74,6 @@ jobs:
       #- name: Echo download path ${{steps.download.outputs.download-path}}
       #  run: echo ${{steps.download.outputs.download-path}}
       - run: npm ci
-        working-directory: ./ui
-      - run: npm run test:unit
-        working-directory: ./ui
+        working-directory: ./cards-against-containers/ui
+      #- run: npm run test:unit
+      #  working-directory: ./ui
