@@ -74,6 +74,6 @@ jobs:
       #- name: Echo download path ${{steps.download.outputs.download-path}}
       #  run: echo ${{steps.download.outputs.download-path}}
       - run: npm ci
-        working-directory: ./cards-against-containers/ui
+        working-directory: ./
       #- run: npm run test:unit
       #  working-directory: ./ui
