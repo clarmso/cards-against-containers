@@ -44,8 +44,8 @@ steps:
     id: "e2e-firefox"
     waitFor: ["build", "unit-tests"]
   # Deploy to Firebase
-  #- name: gcr.io/cards-against-containers/firebase
-  #  args: ["deploy"]
-  #  dir: "ui"
-  #  id: "deploy"
-  #  waitFor: ["e2e-electron", "e2e-firefox", "e2e-chrome"]
+  - name: gcr.io/cards-against-containers/firebase
+    args: ["deploy"]
+    dir: "ui"
+    id: "deploy"
+    waitFor: ["e2e-electron", "e2e-firefox", "e2e-chrome"]
