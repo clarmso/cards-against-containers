@@ -62,7 +62,7 @@ A JSON object containting the index of the question and the question.
 #### Sample Response
 
 ```
-{"index":10,"question":"I drink to forget ________."}
+{"index":52,"question":"I got 99 problems, but ________ ain't one","numAnswer":1}
 ```
 
 ### GET /api/v1/answer
