@@ -8,6 +8,8 @@ import { getAnswerV1, getQuestionV1 } from "../utilities/api"
 
 const updateAllCards = async (setQuestion, setAnswer, setLoading) => {
   setLoading(true)
+  setQuestion("")
+  setAnswer([""])
   let allAnswers = []
   const { numAnswer, question } = await getQuestionV1()
   allAnswers.push(await getAnswerV1())
