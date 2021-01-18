@@ -18,7 +18,7 @@ steps:
     args: ["run", "test:unit"]
     dir: "ui"
     id: "unit-tests"
-    waitFor: ["build"]
+    waitFor: ["install-dependencies"]
   # Run e2e tests (electron)
   - name: cypress/browsers:node12.18.3-chrome87-ff82
     entrypoint: "npm"
@@ -48,4 +48,4 @@ steps:
     args: ["deploy"]
     dir: "ui"
     id: "deploy"
-    waitFor: ["unit-tests", "e2e-electron", "e2e-firefox", "e2e-chrome"]
+    waitFor: ["e2e-electron", "e2e-firefox", "e2e-chrome"]
