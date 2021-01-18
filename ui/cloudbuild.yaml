@@ -4,48 +4,35 @@ steps:
     entrypoint: "npm"
     args: ["ci"]
     dir: "ui"
-    id: "install-dependencies"
   # Build UI
   - name: cypress/browsers:node12.18.3-chrome87-ff82
     entrypoint: "npm"
     args: ["run", "build"]
     dir: "ui"
-    id: "build"
-    waitFor: ["install-dependencies"]
   # Run unitests
   - name: cypress/browsers:node12.18.3-chrome87-ff82
     entrypoint: "npm"
     args: ["run", "test:unit"]
     dir: "ui"
-    id: "unit-tests"
-    waitFor: ["install-dependencies"]
   # Run e2e tests (electron)
   - name: cypress/browsers:node12.18.3-chrome87-ff82
     entrypoint: "npm"
     args: ["run", "test:e2e:ci:electron"]
     dir: "ui"
     env: ["CYPRESS_BASE_URL=http://localhost:5000"]
-    id: "e2e-electron"
-    waitFor: ["build", "unit-tests"]
   # Run e2e tests (chrome)
   - name: cypress/browsers:node12.18.3-chrome87-ff82
     entrypoint: "npm"
     args: ["run", "test:e2e:ci:chrome"]
     dir: "ui"
     env: ["CYPRESS_BASE_URL=http://localhost:5000"]
-    id: "e2e-chrome"
-    waitFor: ["e2e-electron"]
   # Run e2e tests (firefox)
   - name: cypress/browsers:node12.18.3-chrome87-ff82
     entrypoint: "npm"
     args: ["run", "test:e2e:ci:firefox"]
     dir: "ui"
     env: ["CYPRESS_BASE_URL=http://localhost:5000"]
-    id: "e2e-firefox"
-    waitFor: ["e2e-chrome"]
   # Deploy to Firebase
   - name: gcr.io/cards-against-containers/firebase
     args: ["deploy"]
     dir: "ui"
-    id: "deploy"
-    waitFor: ["e2e-electron", "e2e-firefox", "e2e-chrome", "unit-tests", "build"]
