@@ -34,7 +34,7 @@ steps:
     dir: "ui"
     env: ["CYPRESS_BASE_URL=http://localhost:5000"]
     id: "e2e-chrome"
-    waitFor: ["build", "unit-tests"]
+    waitFor: ["e2e-electron"]
   # Run e2e tests (firefox)
   - name: cypress/browsers:node12.18.3-chrome87-ff82
     entrypoint: "npm"
@@ -42,10 +42,10 @@ steps:
     dir: "ui"
     env: ["CYPRESS_BASE_URL=http://localhost:5000"]
     id: "e2e-firefox"
-    waitFor: ["build", "unit-tests"]
+    waitFor: ["e2e-chrome"]
   # Deploy to Firebase
   - name: gcr.io/cards-against-containers/firebase
     args: ["deploy"]
     dir: "ui"
     id: "deploy"
-    waitFor: ["e2e-electron", "e2e-firefox", "e2e-chrome"]
+    waitFor: ["e2e-electron", "e2e-firefox", "e2e-chrome", "unit-tests", "build"]
