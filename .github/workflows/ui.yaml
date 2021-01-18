@@ -6,6 +6,7 @@ on:
       - ".github/workflows/ui.yaml"
       - "ui/**"
       - "!**/*.md"
+      - "!*/cloudbuild.yaml"
 
 defaults:
   run:
