@@ -2,7 +2,7 @@
   "name": "cards-against-containers",
   "private": true,
   "description": "Pick randomly selected question and answer from a deck of cards against containers",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Clare So",
   "dependencies": {
     "@material-ui/core": "4.11.2",
