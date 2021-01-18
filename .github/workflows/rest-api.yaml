@@ -6,7 +6,7 @@ on:
       - ".github/workflows/rest-api.yaml"
       - "rest-api/**"
       - "!**/*.md"
-      - "!*/cloudbuild.yaml"
+      - "!**/cloudbuild.yaml"
 
 defaults:
   run:
