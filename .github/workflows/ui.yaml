@@ -1,7 +1,7 @@
 name: UI
 
 on:
-  push:
+  pull_request:
     paths:
       - ".github/workflows/ui.yaml"
       - "ui/**"
@@ -40,7 +40,7 @@ jobs:
       - name: Build production code
         run: npm run build
 
-      - name: Upload build files 
+      - name: Upload build files
         uses: actions/upload-artifact@v2
         with:
           name: repo
