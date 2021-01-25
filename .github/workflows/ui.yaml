@@ -138,6 +138,8 @@ jobs:
         run: |
           npm run start:ci &
           npx wait-on http://localhost:5000
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       - name: Percy test
         uses: percy/exec-action@v0.3.1
         with:
