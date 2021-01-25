@@ -105,5 +105,7 @@ jobs:
           headless: true
           working-directory: ./ui
           config: baseUrl=http://localhost:5000
+          record: true
         env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
