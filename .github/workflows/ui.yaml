@@ -1,7 +1,7 @@
 name: UI
 
 on:
-  pull_request:
+  push:
     paths:
       - ".github/workflows/ui.yaml"
       - "ui/**"
@@ -109,3 +109,35 @@ jobs:
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+  visual-tests:
+    name: Run visual tests by Percy
+    needs: build
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('ui/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Fetch build
+        id: download
+        uses: actions/download-artifact@v2
+        with:
+          name: repo
+          path: ./ui
+      - name: Start web server
+        run: |
+          npm run start:ci &
+          wait-on http://localhost:5000
+      - name: Percy test
+        uses: percy/exec-action@v0.3.1
+        with:
+          command: "cypress run"
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
