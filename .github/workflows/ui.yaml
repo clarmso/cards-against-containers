@@ -142,5 +142,6 @@ jobs:
         uses: percy/exec-action@v0.3.1
         with:
           command: npx cypress run
+          working-directory: ./ui
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
