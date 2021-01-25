@@ -35,6 +35,7 @@ describe("Sanity tests", () => {
     cy.wait("@v1APIanswer")
     cy.get("[data-cy*='question-']").contains(FAKE_QUESTION)
     cy.get("[data-cy*='answer-']").contains(FAKE_ANSWER)
+    cy.percySnapshot()
   })
 
   it("fetches multiple answer cards if the question requires multiple answers", () => {
