@@ -137,7 +137,7 @@ jobs:
       - name: Start web server
         run: |
           npm run start:ci &
-          wait-on http://localhost:5000
+          npx wait-on http://localhost:5000
       - name: Percy test
         uses: percy/exec-action@v0.3.1
         with:
