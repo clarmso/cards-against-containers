@@ -21,7 +21,7 @@ describe("Cards", () => {
 
   describe("<Answer />", () => {
     test("Display an answer card without any content", () => {
-      const component = renderer.create(<Answer />)
+      const component = renderer.create(<Answer i />)
       const tree = component.toJSON()
       expect(tree).toMatchSnapshot()
     })
