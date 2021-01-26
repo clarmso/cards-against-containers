@@ -3,7 +3,7 @@
 exports[`Cards <Answer /> Display an answer card 1`] = `
 <div
   className="MuiPaper-root MuiCard-root makeStyles-card-3 MuiPaper-elevation8 MuiPaper-rounded"
-  data-cy="answer-TheswanisasymbolofthisOntariocityEachyearwhiteblackswansarereleasedintotheAvonRiver"
+  data-cy="answer-card-0"
 >
   <div
     className="MuiCardContent-root makeStyles-content-4"
@@ -33,7 +33,7 @@ exports[`Cards <Answer /> Display an answer card 1`] = `
 exports[`Cards <Answer /> Display an answer card without any content 1`] = `
 <div
   className="MuiPaper-root MuiCard-root makeStyles-card-3 MuiPaper-elevation8 MuiPaper-rounded"
-  data-cy="answer-"
+  data-cy="answer-card-0"
 >
   <div
     className="MuiCardContent-root makeStyles-content-4"
@@ -87,7 +87,7 @@ exports[`Cards <Answer /> Display an answer card without any content 1`] = `
 exports[`Cards <Question /> Display a question card 1`] = `
 <div
   className="MuiPaper-root MuiCard-root makeStyles-card-1 MuiPaper-elevation8 MuiPaper-rounded"
-  data-cy="question-WhatisStratfordON"
+  data-cy="question-card-0"
 >
   <div
     className="MuiCardContent-root makeStyles-content-2"
@@ -117,7 +117,7 @@ exports[`Cards <Question /> Display a question card 1`] = `
 exports[`Cards <Question /> Display a question card without any content 1`] = `
 <div
   className="MuiPaper-root MuiCard-root makeStyles-card-1 MuiPaper-elevation8 MuiPaper-rounded"
-  data-cy="question-"
+  data-cy="question-card-0"
 >
   <div
     className="MuiCardContent-root makeStyles-content-2"

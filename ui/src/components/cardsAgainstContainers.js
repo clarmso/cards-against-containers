@@ -31,11 +31,11 @@ const CardsAgainstContainers = () => {
   }, [])
 
   const answerList = []
-  answer.forEach(ans => {
+  answer.forEach((ans, index) => {
     answerList.push(
       <Grid item key={ans}>
         <br />
-        <Answer answer={ans} />
+        <Answer answer={ans} index={index} />
       </Grid>
     )
   })
