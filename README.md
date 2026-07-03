@@ -4,7 +4,7 @@ A web application that displays randomly generated DevOps jokes using the [Cards
 
 ## Quick Start
 
-npm should be installed and configured.
+Node.js 26 and npm should be installed and configured.
 
 ### Run locally
 
