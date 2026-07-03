@@ -1,41 +1,33 @@
-# Web Application for Cards Against Containers
+# Cards Against Containers
 
-This directory contains the source files for the UI displaying a random question card and a random answer card.
+A web application that displays randomly generated DevOps jokes using the [Cards Against Containers](https://github.com/cardsagainstcontainers/deck) deck.
 
-## 🚀 Quick Start
+## Quick Start
 
 npm should be installed and configured.
 
-### Run webapp locally
+### Run locally
 
-`npm start`
+```
+npm run develop
+```
 
-### Testing
+Then open http://localhost:8000.
 
-Unit test (todo)
+### Build
 
-#### Run end-to-end tests on development build:
-
-`npm test`
+```
+npm run build
+```
 
 ### Deploy
 
-Firebase project has been created. Please see [Google Firebase Documentation](https://firebase.google.com/docs/web/setup) for details.
-
-1. Deploy the REST API.
+The site is deployed to GitHub Pages automatically when changes are pushed to `main`. To serve a production build locally:
 
 ```
-cd ..
-gcloud builds submit --config rest-api/cloudbuild.yaml --substitutions=_REGION="us-central1"
+npx gatsby serve --prefix-paths
 ```
 
-2. Deploy the UI.
-
-```
-cd ..
-gcloud builds submit --config ui/cloudbuild.yaml .
-```
-
-If all goes well, the web application is deployed on `<project name>.web.app`. See https://cards-against-containers.web.app/ for an example.
+Then open http://localhost:9000/cards-against-containers.
 
 ![Alt Text](src/images/webapp.gif)
