@@ -1,20 +1,41 @@
-# Cards Against Containers
+# Web Application for Cards Against Containers
 
-You can now get a random question and a random answer from [Cards Against Containers](https://github.com/cardsagainstcontainers/deck) deck of cards!
+This directory contains the source files for the UI displaying a random question card and a random answer card.
 
-## REST API Server
+## 🚀 Quick Start
 
-The [rest_api](https://github.com/clarmso/cards-against-containers/tree/master/rest-api) directory contains the code and the configuration files to test, build and deploy the REST API server the Google Cloud Platform.
+npm should be installed and configured.
 
-The currently supported enpoints are the following. As of v1, the endpoints return a random question and a random answer.
+### Run webapp locally
 
-- GET `/api/v1/question`
-- GET `/api/v1/answer`
+`npm start`
 
-## Web Application
+### Testing
 
-The [ui](https://github.com/clarmso/cards-against-containers/tree/master/ui) directory contains the web application code, tests and the configuration files to accompany the REST API server. The web application displays a random question and a random answer from Cards Against Containers.
+Unit test (todo)
 
-![Alt Text](ui/src/images/webapp.gif)
+#### Run end-to-end tests on development build:
 
-See the deplolyed web application here: https://cards-against-containers.web.app/.
+`npm test`
+
+### Deploy
+
+Firebase project has been created. Please see [Google Firebase Documentation](https://firebase.google.com/docs/web/setup) for details.
+
+1. Deploy the REST API.
+
+```
+cd ..
+gcloud builds submit --config rest-api/cloudbuild.yaml --substitutions=_REGION="us-central1"
+```
+
+2. Deploy the UI.
+
+```
+cd ..
+gcloud builds submit --config ui/cloudbuild.yaml .
+```
+
+If all goes well, the web application is deployed on `<project name>.web.app`. See https://cards-against-containers.web.app/ for an example.
+
+![Alt Text](src/images/webapp.gif)

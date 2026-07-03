@@ -1,33 +1,32 @@
 import React, { useState, useEffect } from "react"
 
-import { Button, CircularProgress, Grid } from "@material-ui/core"
+import { Button, Grid } from "@material-ui/core"
 import RefreshIcon from "@material-ui/icons/Refresh"
 
 import { Question, Answer } from "./myCard"
 import { getAnswerV1, getQuestionV1 } from "../utilities/api"
 
-const updateAllCards = async (setQuestion, setAnswer, setLoading) => {
-  setLoading(true)
-  setQuestion("")
-  setAnswer([""])
-  let allAnswers = []
-  const { numAnswer, question } = await getQuestionV1()
-  allAnswers.push(await getAnswerV1())
-  while (numAnswer > allAnswers.length) {
-    allAnswers.push(await getAnswerV1())
+const drawCards = () => {
+  const { numAnswer, question } = getQuestionV1()
+  const allAnswers = []
+  for (let i = 0; i < numAnswer; i++) {
+    allAnswers.push(getAnswerV1())
   }
-  setQuestion(question)
-  setAnswer(allAnswers)
-  setLoading(false)
+  return { question, allAnswers }
 }
 
 const CardsAgainstContainers = () => {
   const [answer, setAnswer] = useState([""])
   const [question, setQuestion] = useState("")
-  const [loading, setLoading] = useState(true)
+
+  const refresh = () => {
+    const { question, allAnswers } = drawCards()
+    setQuestion(question)
+    setAnswer(allAnswers)
+  }
 
   useEffect(() => {
-    updateAllCards(setQuestion, setAnswer, setLoading)
+    refresh()
   }, [])
 
   const answerList = []
@@ -55,11 +54,8 @@ const CardsAgainstContainers = () => {
         <Button
           color="primary"
           variant="contained"
-          onClick={() => {
-            updateAllCards(setQuestion, setAnswer, setLoading)
-          }}
-          disabled={loading}
-          endIcon={loading ? <CircularProgress size={20} /> : <RefreshIcon />}
+          onClick={refresh}
+          endIcon={<RefreshIcon />}
         >
           Refresh
         </Button>

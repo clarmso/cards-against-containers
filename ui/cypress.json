@@ -1,8 +1,0 @@
-{
-  "baseUrl": "http://localhost:8000",
-  "defaultCommandTimeout": 10000,
-  "projectId": "dj71pg",
-  "retries": 2,
-  "requestTimeout": 10000,
-  "video": false
-}
