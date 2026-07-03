@@ -37,7 +37,7 @@ const Footer = ({ author, homepageLink, githubLink }) => {
             <span className={classes.srOnly}>Love</span>
             ❤️{" "}
           </span>{" "}
-          by <a href={homepageLink}>{author}</a> © {new Date().getFullYear()}.{" "}
+          by <a href={homepageLink}>{author}</a> © 2021.{" "}
           <a href={githubLink}>
             <span className={classes.srOnly}>Github Repo</span>
             <GitHubIcon className={classes.icon} aria-label="github" />

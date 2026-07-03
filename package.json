@@ -1,0 +1,58 @@
+{
+  "name": "cards-against-containers",
+  "private": true,
+  "description": "Pick randomly selected question and answer from a deck of cards against containers",
+  "version": "2.0.0",
+  "author": "Clare So",
+  "dependencies": {
+    "@material-ui/core": "4.11.3",
+    "@material-ui/icons": "4.11.2",
+    "@material-ui/styles": "4.11.3",
+    "gatsby": "^3.2.0",
+    "gatsby-plugin-manifest": "^3.2.0",
+    "gatsby-plugin-material-ui": "3.0.1",
+    "gatsby-plugin-react-helmet": "^4.2.0",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0"
+  },
+  "devDependencies": {
+    "eslint": "7.24.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-react": "7.23.2",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "husky": "6.0.0",
+    "lint-staged": "10.5.4",
+    "prettier": "2.2.1",
+    "pretty-quick": "3.1.0"
+  },
+  "keywords": [
+    "Cards Against Containers"
+  ],
+  "license": "CC BY-SA",
+  "scripts": {
+    "build": "gatsby clean; gatsby build --prefix-paths",
+    "clean": "gatsby clean",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clarmso/cards-against-containers/"
+  },
+  "bugs": {
+    "url": "https://github.com/clarmso/cards-against-containers/issues"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,jsx,ts,tsx,json,md}": "pretty-quick --staged"
+  }
+}
