@@ -5,9 +5,11 @@ on:
     branches:
       - main
     paths:
-      - ".github/workflows/ui.yaml"
-      - "ui/**"
-      - "!**/*.md"
+      - ".github/workflows/build-and-deploy.yaml"
+      - "src/**"
+      - "gatsby-config.js"
+      - "package.json"
+      - "package-lock.json"
 
 permissions:
   contents: read
@@ -17,10 +19,6 @@ permissions:
 concurrency:
   group: "pages"
   cancel-in-progress: true
-
-defaults:
-  run:
-    working-directory: ./ui
 
 jobs:
   build:
@@ -32,9 +30,8 @@ jobs:
       - name: Use Node.js 18.x
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 26
           cache: npm
-          cache-dependency-path: ui/package-lock.json
 
       - name: Install dependencies
         run: npm ci
@@ -45,7 +42,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./ui/public
+          path: ./public
 
   deploy:
     name: Deploy
